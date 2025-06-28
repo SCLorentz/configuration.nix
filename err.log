@@ -1,0 +1,1101 @@
+[sclorentz@nixos:~]$ sudo nixos-rebuild switch --show-trace
+error:
+       … while evaluating the attribute 'config'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:359:9:
+          358|         options = checked options;
+          359|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          360|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:359:18:
+          358|         options = checked options;
+          359|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          360|         _module = checked (config._module);
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:9:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |         ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:72:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                                                        ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:33:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                 ^
+          296|           let
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:286:9:
+          285|         in
+          286|         if declaredConfig._module.freeformType == null then
+             |         ^
+          287|           declaredConfig
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:273:28:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                            ^
+          274|
+
+       … while calling 'mapAttrsRecursiveCond'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/attrsets.nix:1177:14:
+         1176|   mapAttrsRecursiveCond =
+         1177|     cond: f: set:
+             |              ^
+         1178|     let
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/attrsets.nix:1186:5:
+         1185|     in
+         1186|     recurse [ ] set;
+             |     ^
+         1187|
+
+       … while evaluating the attribute 'matchedOptions'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:856:15:
+          855|     {
+          856|       inherit matchedOptions;
+             |               ^
+          857|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:846:24:
+          845|
+          846|       matchedOptions = mapAttrs (n: v: v.matchedOptions) resultsByName;
+             |                        ^
+          847|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:794:23:
+          793|
+          794|       resultsByName = mapAttrs (
+             |                       ^
+          795|         name: decls:
+
+       … while calling the 'zipAttrsWith' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:710:21:
+          709|       # an attrset 'name' => list of submodules that declare ‘name’.
+          710|       declsByName = zipAttrsWith (n: v: v) (
+             |                     ^
+          711|         map (
+
+       … while calling the 'map' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:711:9:
+          710|       declsByName = zipAttrsWith (n: v: v) (
+          711|         map (
+             |         ^
+          712|           module:
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:265:30:
+          264|         in
+          265|         mergeModules prefix (reverseList collected);
+             |                              ^
+          266|
+
+       … while calling 'reverseList'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1103:5:
+         1102|   reverseList =
+         1103|     xs:
+             |     ^
+         1104|     let
+
+       … while calling the 'genList' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1107:5:
+         1106|     in
+         1107|     genList (n: elemAt xs (l - n - 1)) l;
+             |     ^
+         1108|
+
+       … while evaluating the second argument passed to builtins.genList
+
+       … while calling the 'length' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1105:11:
+         1104|     let
+         1105|       l = length xs;
+             |           ^
+         1106|     in
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:251:13:
+          250|           collected =
+          251|             collectModules class (specialArgs.modulesPath or "") (regularModules ++ [ internalModule ])
+             |             ^
+          252|               (
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:522:34:
+          521|     in
+          522|     modulesPath: initialModules: args:
+             |                                  ^
+          523|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:523:5:
+          522|     modulesPath: initialModules: args:
+          523|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+             |     ^
+          524|
+
+       … while calling 'filterModules'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:492:9:
+          491|         modulesPath:
+          492|         { disabled, modules }:
+             |         ^
+          493|         let
+
+       … while calling the 'map' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:516:9:
+          515|         in
+          516|         map (attrs: attrs.module) (genericClosure {
+             |         ^
+          517|           startSet = keyFilter modules;
+
+       … while calling the 'genericClosure' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:516:36:
+          515|         in
+          516|         map (attrs: attrs.module) (genericClosure {
+             |                                    ^
+          517|           startSet = keyFilter modules;
+
+       … while calling the 'filter' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:517:22:
+          516|         map (attrs: attrs.module) (genericClosure {
+          517|           startSet = keyFilter modules;
+             |                      ^
+          518|           operator = attrs: keyFilter attrs.modules;
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:31:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                               ^
+          515|         in
+
+       … in the argument of the not operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:39:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          515|         in
+
+       … while calling the 'elem' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:39:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          515|         in
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:513:26:
+          512|
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+             |                          ^
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:24:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          454|             inherit modules;
+
+       … while evaluating the attribute 'disabled'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:13:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |             ^
+          454|             inherit modules;
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:24:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          454|             inherit modules;
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:471:19:
+          470|                 (
+          471|                   if module.disabledModules != [ ] then
+             |                   ^
+          472|                     [
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:462:24:
+          461|             let
+          462|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                        ^
+          463|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:410:11:
+          409|         if class != null then
+          410|           m:
+             |           ^
+          411|           if m._class == null || m._class == class then
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:411:11:
+          410|           m:
+          411|           if m._class == null || m._class == class then
+             |           ^
+          412|             m
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:411:31:
+          410|           m:
+          411|           if m._class == null || m._class == class then
+             |                               ^
+          412|             m
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:462:37:
+          461|             let
+          462|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                                     ^
+          463|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling 'loadModule'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:376:42:
+          375|       loadModule =
+          376|         args: fallbackFile: fallbackKey: m:
+             |                                          ^
+          377|         if isFunction m then
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:404:11:
+          403|         else
+          404|           unifyModuleSyntax (toString m) (toString m) (
+             |           ^
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+
+       … while calling 'unifyModuleSyntax'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:562:16:
+          561|   unifyModuleSyntax =
+          562|     file: key: m:
+             |                ^
+          563|     let
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:583:5:
+          582|     in
+          583|     if m ? config || m ? options then
+             |     ^
+          584|       let
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:583:19:
+          582|     in
+          583|     if m ? config || m ? options then
+             |                   ^
+          584|       let
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:405:13:
+          404|           unifyModuleSyntax (toString m) (toString m) (
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+             |             ^
+          406|           );
+
+       … while calling 'applyModuleArgsIfFunction'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:13:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |             ^
+          633|
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:35:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                   ^
+          633|
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:38:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                      ^
+          633|
+
+       … while calling 'isFunction'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:16:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                ^
+         1024|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:41:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                                         ^
+         1024|
+
+       … while calling the 'isFunction' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:19:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                   ^
+         1024|
+
+       … while calling the 'import' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:405:53:
+          404|           unifyModuleSyntax (toString m) (toString m) (
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+             |                                                     ^
+          406|           );
+
+       error: syntax error, unexpected ',', expecting '.' or '='
+       at /etc/nixos/configuration.nix:6:9:
+            5|
+            6| { config, pkgs, lib, ... }:
+             |         ^
+            7| let
+building Nix...
+error:
+       … while evaluating the attribute 'config'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:359:9:
+          358|         options = checked options;
+          359|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          360|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:359:18:
+          358|         options = checked options;
+          359|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          360|         _module = checked (config._module);
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:9:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |         ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:72:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                                                        ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:33:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                 ^
+          296|           let
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:286:9:
+          285|         in
+          286|         if declaredConfig._module.freeformType == null then
+             |         ^
+          287|           declaredConfig
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:273:28:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                            ^
+          274|
+
+       … while calling 'mapAttrsRecursiveCond'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/attrsets.nix:1177:14:
+         1176|   mapAttrsRecursiveCond =
+         1177|     cond: f: set:
+             |              ^
+         1178|     let
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/attrsets.nix:1186:5:
+         1185|     in
+         1186|     recurse [ ] set;
+             |     ^
+         1187|
+
+       … while evaluating the attribute 'matchedOptions'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:856:15:
+          855|     {
+          856|       inherit matchedOptions;
+             |               ^
+          857|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:846:24:
+          845|
+          846|       matchedOptions = mapAttrs (n: v: v.matchedOptions) resultsByName;
+             |                        ^
+          847|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:794:23:
+          793|
+          794|       resultsByName = mapAttrs (
+             |                       ^
+          795|         name: decls:
+
+       … while calling the 'zipAttrsWith' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:710:21:
+          709|       # an attrset 'name' => list of submodules that declare ‘name’.
+          710|       declsByName = zipAttrsWith (n: v: v) (
+             |                     ^
+          711|         map (
+
+       … while calling the 'map' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:711:9:
+          710|       declsByName = zipAttrsWith (n: v: v) (
+          711|         map (
+             |         ^
+          712|           module:
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:265:30:
+          264|         in
+          265|         mergeModules prefix (reverseList collected);
+             |                              ^
+          266|
+
+       … while calling 'reverseList'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1103:5:
+         1102|   reverseList =
+         1103|     xs:
+             |     ^
+         1104|     let
+
+       … while calling the 'genList' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1107:5:
+         1106|     in
+         1107|     genList (n: elemAt xs (l - n - 1)) l;
+             |     ^
+         1108|
+
+       … while evaluating the second argument passed to builtins.genList
+
+       … while calling the 'length' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1105:11:
+         1104|     let
+         1105|       l = length xs;
+             |           ^
+         1106|     in
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:251:13:
+          250|           collected =
+          251|             collectModules class (specialArgs.modulesPath or "") (regularModules ++ [ internalModule ])
+             |             ^
+          252|               (
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:522:34:
+          521|     in
+          522|     modulesPath: initialModules: args:
+             |                                  ^
+          523|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:523:5:
+          522|     modulesPath: initialModules: args:
+          523|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+             |     ^
+          524|
+
+       … while calling 'filterModules'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:492:9:
+          491|         modulesPath:
+          492|         { disabled, modules }:
+             |         ^
+          493|         let
+
+       … while calling the 'map' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:516:9:
+          515|         in
+          516|         map (attrs: attrs.module) (genericClosure {
+             |         ^
+          517|           startSet = keyFilter modules;
+
+       … while calling the 'genericClosure' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:516:36:
+          515|         in
+          516|         map (attrs: attrs.module) (genericClosure {
+             |                                    ^
+          517|           startSet = keyFilter modules;
+
+       … while calling the 'filter' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:517:22:
+          516|         map (attrs: attrs.module) (genericClosure {
+          517|           startSet = keyFilter modules;
+             |                      ^
+          518|           operator = attrs: keyFilter attrs.modules;
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:31:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                               ^
+          515|         in
+
+       … in the argument of the not operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:39:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          515|         in
+
+       … while calling the 'elem' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:39:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          515|         in
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:513:26:
+          512|
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+             |                          ^
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:24:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          454|             inherit modules;
+
+       … while evaluating the attribute 'disabled'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:13:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |             ^
+          454|             inherit modules;
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:24:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          454|             inherit modules;
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:471:19:
+          470|                 (
+          471|                   if module.disabledModules != [ ] then
+             |                   ^
+          472|                     [
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:462:24:
+          461|             let
+          462|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                        ^
+          463|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:410:11:
+          409|         if class != null then
+          410|           m:
+             |           ^
+          411|           if m._class == null || m._class == class then
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:411:11:
+          410|           m:
+          411|           if m._class == null || m._class == class then
+             |           ^
+          412|             m
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:411:31:
+          410|           m:
+          411|           if m._class == null || m._class == class then
+             |                               ^
+          412|             m
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:462:37:
+          461|             let
+          462|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                                     ^
+          463|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling 'loadModule'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:376:42:
+          375|       loadModule =
+          376|         args: fallbackFile: fallbackKey: m:
+             |                                          ^
+          377|         if isFunction m then
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:404:11:
+          403|         else
+          404|           unifyModuleSyntax (toString m) (toString m) (
+             |           ^
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+
+       … while calling 'unifyModuleSyntax'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:562:16:
+          561|   unifyModuleSyntax =
+          562|     file: key: m:
+             |                ^
+          563|     let
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:583:5:
+          582|     in
+          583|     if m ? config || m ? options then
+             |     ^
+          584|       let
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:583:19:
+          582|     in
+          583|     if m ? config || m ? options then
+             |                   ^
+          584|       let
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:405:13:
+          404|           unifyModuleSyntax (toString m) (toString m) (
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+             |             ^
+          406|           );
+
+       … while calling 'applyModuleArgsIfFunction'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:13:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |             ^
+          633|
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:35:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                   ^
+          633|
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:38:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                      ^
+          633|
+
+       … while calling 'isFunction'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:16:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                ^
+         1024|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:41:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                                         ^
+         1024|
+
+       … while calling the 'isFunction' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:19:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                   ^
+         1024|
+
+       … while calling the 'import' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:405:53:
+          404|           unifyModuleSyntax (toString m) (toString m) (
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+             |                                                     ^
+          406|           );
+
+       error: syntax error, unexpected ',', expecting '.' or '='
+       at /etc/nixos/configuration.nix:6:9:
+            5|
+            6| { config, pkgs, lib, ... }:
+             |         ^
+            7| let
+building the system configuration...
+error:
+       … while evaluating the attribute 'config.system.build.toplevel'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:359:9:
+          358|         options = checked options;
+          359|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          360|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:359:18:
+          358|         options = checked options;
+          359|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          360|         _module = checked (config._module);
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:9:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |         ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:72:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                                                        ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:295:33:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                 ^
+          296|           let
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:286:9:
+          285|         in
+          286|         if declaredConfig._module.freeformType == null then
+             |         ^
+          287|           declaredConfig
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:273:28:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                            ^
+          274|
+
+       … while calling 'mapAttrsRecursiveCond'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/attrsets.nix:1177:14:
+         1176|   mapAttrsRecursiveCond =
+         1177|     cond: f: set:
+             |              ^
+         1178|     let
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/attrsets.nix:1186:5:
+         1185|     in
+         1186|     recurse [ ] set;
+             |     ^
+         1187|
+
+       … while evaluating the attribute 'matchedOptions'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:856:15:
+          855|     {
+          856|       inherit matchedOptions;
+             |               ^
+          857|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:846:24:
+          845|
+          846|       matchedOptions = mapAttrs (n: v: v.matchedOptions) resultsByName;
+             |                        ^
+          847|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:794:23:
+          793|
+          794|       resultsByName = mapAttrs (
+             |                       ^
+          795|         name: decls:
+
+       … while calling the 'zipAttrsWith' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:710:21:
+          709|       # an attrset 'name' => list of submodules that declare ‘name’.
+          710|       declsByName = zipAttrsWith (n: v: v) (
+             |                     ^
+          711|         map (
+
+       … while calling the 'map' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:711:9:
+          710|       declsByName = zipAttrsWith (n: v: v) (
+          711|         map (
+             |         ^
+          712|           module:
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:265:30:
+          264|         in
+          265|         mergeModules prefix (reverseList collected);
+             |                              ^
+          266|
+
+       … while calling 'reverseList'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1103:5:
+         1102|   reverseList =
+         1103|     xs:
+             |     ^
+         1104|     let
+
+       … while calling the 'genList' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1107:5:
+         1106|     in
+         1107|     genList (n: elemAt xs (l - n - 1)) l;
+             |     ^
+         1108|
+
+       … while evaluating the second argument passed to builtins.genList
+
+       … while calling the 'length' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/lists.nix:1105:11:
+         1104|     let
+         1105|       l = length xs;
+             |           ^
+         1106|     in
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:251:13:
+          250|           collected =
+          251|             collectModules class (specialArgs.modulesPath or "") (regularModules ++ [ internalModule ])
+             |             ^
+          252|               (
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:522:34:
+          521|     in
+          522|     modulesPath: initialModules: args:
+             |                                  ^
+          523|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:523:5:
+          522|     modulesPath: initialModules: args:
+          523|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+             |     ^
+          524|
+
+       … while calling 'filterModules'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:492:9:
+          491|         modulesPath:
+          492|         { disabled, modules }:
+             |         ^
+          493|         let
+
+       … while calling the 'map' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:516:9:
+          515|         in
+          516|         map (attrs: attrs.module) (genericClosure {
+             |         ^
+          517|           startSet = keyFilter modules;
+
+       … while calling the 'genericClosure' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:516:36:
+          515|         in
+          516|         map (attrs: attrs.module) (genericClosure {
+             |                                    ^
+          517|           startSet = keyFilter modules;
+
+       … while calling the 'filter' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:517:22:
+          516|         map (attrs: attrs.module) (genericClosure {
+          517|           startSet = keyFilter modules;
+             |                      ^
+          518|           operator = attrs: keyFilter attrs.modules;
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:31:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                               ^
+          515|         in
+
+       … in the argument of the not operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:39:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          515|         in
+
+       … while calling the 'elem' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:514:39:
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          515|         in
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:513:26:
+          512|
+          513|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+             |                          ^
+          514|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:24:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          454|             inherit modules;
+
+       … while evaluating the attribute 'disabled'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:13:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |             ^
+          454|             inherit modules;
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:453:24:
+          452|           collectResults = modules: {
+          453|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          454|             inherit modules;
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:471:19:
+          470|                 (
+          471|                   if module.disabledModules != [ ] then
+             |                   ^
+          472|                     [
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:462:24:
+          461|             let
+          462|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                        ^
+          463|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling anonymous lambda
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:410:11:
+          409|         if class != null then
+          410|           m:
+             |           ^
+          411|           if m._class == null || m._class == class then
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:411:11:
+          410|           m:
+          411|           if m._class == null || m._class == class then
+             |           ^
+          412|             m
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:411:31:
+          410|           m:
+          411|           if m._class == null || m._class == class then
+             |                               ^
+          412|             m
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:462:37:
+          461|             let
+          462|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                                     ^
+          463|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling 'loadModule'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:376:42:
+          375|       loadModule =
+          376|         args: fallbackFile: fallbackKey: m:
+             |                                          ^
+          377|         if isFunction m then
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:404:11:
+          403|         else
+          404|           unifyModuleSyntax (toString m) (toString m) (
+             |           ^
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+
+       … while calling 'unifyModuleSyntax'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:562:16:
+          561|   unifyModuleSyntax =
+          562|     file: key: m:
+             |                ^
+          563|     let
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:583:5:
+          582|     in
+          583|     if m ? config || m ? options then
+             |     ^
+          584|       let
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:583:19:
+          582|     in
+          583|     if m ? config || m ? options then
+             |                   ^
+          584|       let
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:405:13:
+          404|           unifyModuleSyntax (toString m) (toString m) (
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+             |             ^
+          406|           );
+
+       … while calling 'applyModuleArgsIfFunction'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:13:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |             ^
+          633|
+
+       … while evaluating a branch condition
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:35:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                   ^
+          633|
+
+       … from call site
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:632:38:
+          631|   applyModuleArgsIfFunction =
+          632|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                      ^
+          633|
+
+       … while calling 'isFunction'
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:16:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                ^
+         1024|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:41:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                                         ^
+         1024|
+
+       … while calling the 'isFunction' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/trivial.nix:1023:19:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                   ^
+         1024|
+
+       … while calling the 'import' builtin
+         at /nix/store/lza4h3nr51szdm4pkqnchn2ph4npdrx6-nixos-25.05.804391.b2485d569675/nixos/lib/modules.nix:405:53:
+          404|           unifyModuleSyntax (toString m) (toString m) (
+          405|             applyModuleArgsIfFunction (toString m) (import m) args
+             |                                                     ^
+          406|           );
+
+       error: syntax error, unexpected ',', expecting '.' or '='
+       at /etc/nixos/configuration.nix:6:9:
+            5|
+            6| { config, pkgs, lib, ... }:
+             |         ^
+            7| let
