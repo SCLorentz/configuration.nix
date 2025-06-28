@@ -5,7 +5,7 @@
 
 { config, pkgs, lib, ... }:
 let
-  nix-software-center = import (pkgs.fetchFromGitHub {
+  nixSoftwareCenterPkg = pkgs.callPackage (pkgs.fetchFromGitHub {
     owner = "snowfallorg";
     repo = "nix-software-center";
     rev = "0.1.2";
