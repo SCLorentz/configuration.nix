@@ -13,25 +13,20 @@ let
   }) {};
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
 in
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    (import "${home-manager}/nixos")
+  ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Habilita o módulo ZFS no kernel
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.requestEncryptionCredentials = true;
-  boot.kernelModules = [ "kvm-intel" "zfs" ];
-
-  # Carrega o módulo ZFS no initrd (importante para root on ZFS)
-  boot.initrd.supportedFilesystems = [ "zfs" ];
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    supportedFilesystems = [ "zfs" ];
+    zfs.requestEncryptionCredentials = true;
+    kernelModules = [ "kvm-intel" "zfs" ];
+    initrd.supportedFilesystems = [ "zfs" ];
+  };
 
   # Ativa o serviço ZFS
   services.zfs = {
@@ -43,8 +38,10 @@ in
   boot.zfs.devNodes = "/dev/disk/by-uuid"; # ou by-id, dependendo da sua config
 
   # Outros ajustes úteis (opcional)
-  networking.hostId = "deadbeef";
-  networking.hostName = "nixos";        # Define your hostname.
+  networking = {
+    hostId = "deadbeef";
+    hostName = "nixos";
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -52,19 +49,60 @@ in
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  # Configurações adicionais de internacionalização
+  i18n = {
+    defaultLocale = "pt_BR.UTF-8";
+    supportedLocales = [
+      "pt_BR.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+    ];
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
+    # Configuração simplificada do input method
+    inputMethod = {
+      enabled = "ibus";
+    };
+
+    extraLocaleSettings = {
+      LC_ADDRESS = "pt_BR.UTF-8";
+      LC_IDENTIFICATION = "pt_BR.UTF-8";
+      LC_MEASUREMENT = "pt_BR.UTF-8";
+      LC_MONETARY = "pt_BR.UTF-8";
+      LC_NAME = "pt_BR.UTF-8";
+      LC_NUMERIC = "pt_BR.UTF-8";
+      LC_PAPER = "pt_BR.UTF-8";
+      LC_TELEPHONE = "pt_BR.UTF-8";
+      LC_TIME = "pt_BR.UTF-8";
+    };
+  };
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "br";
+    variant = "abnt2";
+  };
+
+  # Configure console keymap
+  console.keyMap = "br-abnt2";
+
+  # Configuração de fontes
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+    ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "Liberation Serif" ];
+        sansSerif = [ "Liberation Sans" ];
+        monospace = [ "Liberation Mono" ];
+      };
+      enable = true;
+    };
   };
 
   #services.xserver.enable = true; X11
@@ -80,10 +118,9 @@ in
 
   #services.docker.enable = true;
   services.flatpak.enable = true;
-  programs.chromium.enable = true;
-  #programs.firefox.enable = true;
 
   programs.chromium = {
+    enable = true;
     extensions = [
       "glloabhodjfmeoccmdngmhkpmdlakfbn"    # material you
       "gighmmpiobklfepjocnamgkkbiglidom"    # adBlock
@@ -95,9 +132,19 @@ in
     };
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    chromium = {
+      commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --gtk-version=4 --enable-features=OverlayScrollbar";
+    };
+  };
+
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver = {
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
+
   #systemd.user.services.dconf.enable = true;
   #systemd.user.services.waylock.enable = true;
 
@@ -117,15 +164,6 @@ in
     #serviceConfig.Type = "oneshot";
     #serviceConfig.RemainAfterExit = true;
   #};
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "br";
-    variant = "nodeadkeys";
-  };
-
-  # Configure console keymap
-  #console.keyMap = "br-abnt2";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -201,9 +239,7 @@ in
     description = "Felipe Lorentz";
     extraGroups = [ "networkmanager" "wheel" ];
 
-    packages = with pkgs; [
-      ungoogled-chromium
-    ];
+    packages = with pkgs; [];
   };
 
   environment.gnome.excludePackages = with pkgs; [
@@ -230,21 +266,17 @@ in
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # dev
-   	vim
+    vim
     git
     zed-editor
     # bloatware
-   	#ungoogled-chromium
     chromium
-   	nix-software-center
-   	warp-terminal
+    nix-software-center
+    warp-terminal
     vaapiVdpau
     loupe
     celluloid
@@ -264,23 +296,23 @@ in
     gnome-shell
     # themes & fonts & cursors
     whitesur-icon-theme
-   	whitesur-cursors
+    whitesur-cursors
     layan-gtk-theme
     font-awesome
     # extensions
     gnomeExtensions.blur-my-shell
     gnomeExtensions.logo-menu
-  	gnomeExtensions.burn-my-windows
-  	gnomeExtensions.rounded-window-corners-reborn
+    gnomeExtensions.burn-my-windows
+    gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.dash2dock-lite
     gnomeExtensions.keep-pinned-apps-in-appgrid
     gnomeExtensions.window-title-is-back
     # non enabled by default extensions
-  	gnomeExtensions.user-themes
-  	gnomeExtensions.just-perfection
-  	gnomeExtensions.user-avatar-in-quick-settings
-  	gnomeExtensions.tweaks-in-system-menu
-  	gnomeExtensions.compiz-windows-effect
+    gnomeExtensions.user-themes
+    gnomeExtensions.just-perfection
+    gnomeExtensions.user-avatar-in-quick-settings
+    gnomeExtensions.tweaks-in-system-menu
+    #gnomeExtensions.compiz-windows-effect
     gnomeExtensions.one-click-bios
     gnomeExtensions.top-bar-organizer
     gnomeExtensions.dash-to-dock
@@ -289,12 +321,12 @@ in
   xdg.mime.defaultApplications = {
     "text/*" = "zed-editor.desktop";
     "application/x-zerosize" = "zed-editor.desktop";
-    "application/xhtml+xml" = "ungoogled-chromium.desktop";
-    "application/pdf" = "ungoogled-chromium.desktop";
-    "x-scheme-handler/https" = "ungoogled-chromium.desktop";
-    "x-scheme-handler/http" = "ungoogled-chromium.desktop";
-    "x-scheme-handler/ftp" = "ungoogled-chromium.desktop";
-    "x-scheme-handler/chrome" = "ungoogled-chromium.desktop";
+    "application/xhtml+xml" = "chromium.desktop";
+    "application/pdf" = "chromium.desktop";
+    "x-scheme-handler/https" = "chromium.desktop";
+    "x-scheme-handler/http" = "chromium.desktop";
+    "x-scheme-handler/ftp" = "chromium.desktop";
+    "x-scheme-handler/chrome" = "chromium.desktop";
   };
 
   xdg.portal = {
@@ -329,5 +361,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
