@@ -5,7 +5,7 @@
 
 { config, pkgs, lib, ... }:
 let
-  nixSoftwareCenterPkg = pkgs.callPackage (pkgs.fetchFromGitHub {
+  nix-software-center = import (pkgs.fetchFromGitHub {
     owner = "snowfallorg";
     repo = "nix-software-center";
     rev = "0.1.2";
@@ -24,34 +24,27 @@ in
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # Habilita o módulo ZFS no kernel
   boot.supportedFilesystems = [ "zfs" ];
-  
+  boot.zfs.requestEncryptionCredentials = true;
+  boot.kernelModules = [ "kvm-intel" "zfs" ];
+
   # Carrega o módulo ZFS no initrd (importante para root on ZFS)
   boot.initrd.supportedFilesystems = [ "zfs" ];
-  
+
   # Ativa o serviço ZFS
   services.zfs = {
-    enable = true;
     autoScrub.enable = true;  # opcional, faz scrub periódico
     autoSnapshot.enable = true;  # opcional, snapshots automáticos
   };
-  
+
   # Para usar ZFS como raiz (root):
   boot.zfs.devNodes = "/dev/disk/by-uuid"; # ou by-id, dependendo da sua config
-  
-  # (Opcional) Define o pool de boot, se ZFS for usado como raiz
-  boot.zfs.root = "zpool_name/path";
-  
+
   # Outros ajustes úteis (opcional)
   networking.hostId = "deadbeef";
   networking.hostName = "nixos";        # Define your hostname.
-  networking.wireless.enable = true;    # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -250,7 +243,7 @@ in
     # bloatware
    	#ungoogled-chromium
     chromium
-   	nixSoftwareCenterPkg
+   	nix-software-center
    	warp-terminal
     vaapiVdpau
     loupe
