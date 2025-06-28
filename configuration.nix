@@ -250,7 +250,7 @@ in
     # bloatware
    	#ungoogled-chromium
     chromium
-   	nix-software-center
+   	nixSoftwareCenterPkg
    	warp-terminal
     vaapiVdpau
     loupe
