@@ -26,16 +26,75 @@ in
     zfs.requestEncryptionCredentials = true;
     kernelModules = [ "kvm-intel" "zfs" ];
     initrd.supportedFilesystems = [ "zfs" ];
+
+    plymouth = {
+      enable = true;
+      theme = "fade-in";
+    };
+
+    consoleLogLevel = 0;
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "splash"
+    ];
+    initrd.verbose = false;
   };
 
-  # Ativa o serviço ZFS
   services.zfs = {
     autoScrub.enable = true;  # opcional, faz scrub periódico
     autoSnapshot.enable = true;  # opcional, snapshots automáticos
   };
 
-  # Para usar ZFS como raiz (root):
-  boot.zfs.devNodes = "/dev/disk/by-uuid"; # ou by-id, dependendo da sua config
+  boot.zfs.devNodes = "/dev/disk/by-uuid";
+
+  programs.zsh = {
+    enable = true;
+    ohMyZsh.enable = true;
+    ohMyZsh.theme = "robbyrussell";
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    ohMyZsh.plugins = [
+      "git"
+      "alias-finder"
+      "catimg"
+      "composer"
+      "docker"
+      "emoji"
+      "history"
+      "rust"
+      "1password"
+      "sudo"
+      "ssh"
+      "safe-paste"
+    ];
+  };
+
+  users.defaultUserShell = pkgs.zsh;
+
+  #services.xserver.enable = true; Xss11
+  programs.sway.enable = true;
+  virtualisation.waydroid.enable = true;
+  virtualisation.docker.enable = true;
+
+  #services.docker.enable = true;
+  services.flatpak.enable = true;
+
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "glloabhodjfmeoccmdngmhkpmdlakfbn"    # material you
+      "gighmmpiobklfepjocnamgkkbiglidom"    # adBlock
+    ];
+    initialPrefs = {
+      "first_run_tabs" = [
+          "https://sclorentz.github.io/"
+        ];
+    };
+  };
 
   # Outros ajustes úteis (opcional)
   networking = {
@@ -48,32 +107,6 @@ in
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
-
-  # Configurações adicionais de internacionalização
-  i18n = {
-    defaultLocale = "pt_BR.UTF-8";
-    supportedLocales = [
-      "pt_BR.UTF-8/UTF-8"
-      "en_US.UTF-8/UTF-8"
-    ];
-
-    # Configuração simplificada do input method
-    inputMethod = {
-      enabled = "ibus";
-    };
-
-    extraLocaleSettings = {
-      LC_ADDRESS = "pt_BR.UTF-8";
-      LC_IDENTIFICATION = "pt_BR.UTF-8";
-      LC_MEASUREMENT = "pt_BR.UTF-8";
-      LC_MONETARY = "pt_BR.UTF-8";
-      LC_NAME = "pt_BR.UTF-8";
-      LC_NUMERIC = "pt_BR.UTF-8";
-      LC_PAPER = "pt_BR.UTF-8";
-      LC_TELEPHONE = "pt_BR.UTF-8";
-      LC_TIME = "pt_BR.UTF-8";
-    };
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -105,33 +138,6 @@ in
     };
   };
 
-  #services.xserver.enable = true; X11
-  programs.sway.enable = true;
-  virtualisation.waydroid.enable = true;
-  virtualisation.docker.enable = true;
-
-  boot.plymouth = {
-    enable = true;
-    #themePackages = [ pkgs.plymouth-matrix-theme ];
-    theme = "fade-in";
-  };
-
-  #services.docker.enable = true;
-  services.flatpak.enable = true;
-
-  programs.chromium = {
-    enable = true;
-    extensions = [
-      "glloabhodjfmeoccmdngmhkpmdlakfbn"    # material you
-      "gighmmpiobklfepjocnamgkkbiglidom"    # adBlock
-    ];
-    initialPrefs = {
-      "first_run_tabs" = [
-          "https://sclorentz.github.io/"
-        ];
-    };
-  };
-
   nixpkgs.config = {
     allowUnfree = true;
     chromium = {
@@ -144,26 +150,6 @@ in
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
   };
-
-  #systemd.user.services.dconf.enable = true;
-  #systemd.user.services.waylock.enable = true;
-
-  #systemd.user.services.dconf = {
-    #description = "Set GNOME lock screen settings";
-    #wantedBy = [ "default.target" ];
-    #serviceConfig.ExecStart = "${pkgs.dconf}/bin/dconf write /org/gnome/desktop/screensaver/lock-enabled false";
-    #serviceConfig.Type = "oneshot";
-    #serviceConfig.RemainAfterExit = true;
-  #};
-
-  # Configuração do waylock
-  #systemd.user.services.waylock = {
-    #description = "Lock screen with Waylock";
-    #wantedBy = [ "default.target" ];
-    #serviceConfig.ExecStart = "${pkgs.waylock}/bin/waylock";
-    #serviceConfig.Type = "oneshot";
-    #serviceConfig.RemainAfterExit = true;
-  #};
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -239,7 +225,9 @@ in
     description = "Felipe Lorentz";
     extraGroups = [ "networkmanager" "wheel" ];
 
-    packages = with pkgs; [];
+    packages = with pkgs; [
+      pkgs.android-tools
+    ];
   };
 
   environment.gnome.excludePackages = with pkgs; [
@@ -273,10 +261,14 @@ in
     vim
     git
     zed-editor
+    ghostty
+    oh-my-zsh
+    #alacritty
+    catimg
     # bloatware
+    theme-obsidian2
     chromium
     nix-software-center
-    warp-terminal
     vaapiVdpau
     loupe
     celluloid
@@ -284,6 +276,7 @@ in
     image-roll
     gnome-tweaks
     spot
+    imagemagick
     # sys
     neofetch
     nautilus-python
@@ -343,16 +336,7 @@ in
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
