@@ -20,35 +20,65 @@ in
   ];
 
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    zfs = {
+      requestEncryptionCredentials = true;
+      devNodes = "/dev/disk/by-uuid";
+    };
     supportedFilesystems = [ "zfs" ];
-    zfs.requestEncryptionCredentials = true;
     kernelModules = [ "kvm-intel" "zfs" ];
     initrd.supportedFilesystems = [ "zfs" ];
 
     plymouth = {
-      enable = true;
+      enable = false;
       theme = "fade-in";
     };
 
-    consoleLogLevel = 0;
-    kernelParams = [
-      "quiet"
-      "udev.log_level=3"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "splash"
-    ];
-    initrd.verbose = false;
+    #consoleLogLevel = 0;
+    #kernelParams = [
+      #"quiet"
+      #"udev.log_level=3"
+      #"rd.systemd.show_status=false"
+      #"rd.udev.log_level=3"
+      #"splash"
+    #];
+    #initrd.verbose = false;
   };
 
-  services.zfs = {
-    autoScrub.enable = true;  # opcional, faz scrub periódico
-    autoSnapshot.enable = true;  # opcional, snapshots automáticos
-  };
+  services = {
+    zfs = {
+      autoScrub.enable = true;
+      autoSnapshot.enable = true;
+    };
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+      jack.enable = true;
 
-  boot.zfs.devNodes = "/dev/disk/by-uuid";
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
+    displayManager = {
+      defaultSession = "hyprland";
+      sddm.enable = true;
+      sddm.wayland.enable = true;
+      #autoLogin = {
+        #enable = true;
+        #user = "sclorentz";
+      #};
+    };
+    libinput.enable = true;
+    printing.enable = true;
+    flatpak.enable = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -75,13 +105,8 @@ in
 
   users.defaultUserShell = pkgs.zsh;
 
-  #services.xserver.enable = true; Xss11
-  programs.sway.enable = true;
-  virtualisation.waydroid.enable = true;
-  virtualisation.docker.enable = true;
-
-  #services.docker.enable = true;
-  services.flatpak.enable = true;
+  # programs.sway.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   programs.chromium = {
     enable = true;
@@ -96,23 +121,18 @@ in
     };
   };
 
+  # Habilita Hyprland
+  programs.hyprland.enable = true;
+
   # Outros ajustes úteis (opcional)
   networking = {
     hostId = "deadbeef";
     hostName = "nixos";
+    networkmanager.enable = true;
   };
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "br";
-    variant = "abnt2";
-  };
 
   # Configure console keymap
   console.keyMap = "br-abnt2";
@@ -141,37 +161,13 @@ in
   nixpkgs.config = {
     allowUnfree = true;
     chromium = {
-      commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --gtk-version=4 --enable-features=OverlayScrollbar";
+      commandLineArgs = "--use-system-title-bar --enable-features=UseOzonePlatform --ozone-platform=wayland --gtk-version=4 --enable-features=OverlayScrollbar";
     };
   };
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver = {
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   users.users.new_user = {
     isNormalUser = true;
@@ -185,37 +181,7 @@ in
     home.username = "new_user";
     home.homeDirectory = "/home/new_user";
 
-    dconf = {
-      enable = true;
-
-      settings = {
-        "org/gnome/shell" = {
-          disable-user-extensions = false;
-          enabled-extensions = [
-            "blur-my-shell@aunetx"
-            "logomenu@aryan_k"
-            "dash2dock-lite@icedman.github.com"
-            "pinned-apps-in-appgrid@brunosilva.io"
-            "rounded-window-corners@fxgn"
-            "window-title-is-back@fthx"
-          ];
-        };
-        "org/gnome/shell/extensions/window-title-is-back" = {
-          show-title = false;
-          fixed-width = false;
-        };
-        "org/gnome/shell/extensions/quick-settings-avatar" = {
-          position = "left";
-          remove-button-background = false;
-        };
-        "org/gnome/shell/extensions/rounded-windows-corners" = {
-          corner-radius = 9;
-        };
-        "org/gnome/desktop/wm/preferences" = {
-          button-layout = ":minimize,maximize,close";  # Define a ordem dos botões
-        };
-      };
-    };
+    dconf = { };
   };
 
   #gtk.theme.package = "Layan-Dark";
@@ -230,44 +196,20 @@ in
     ];
   };
 
-  environment.gnome.excludePackages = with pkgs; [
-  	gnome-maps
-    gnome-tour
-    gnome-user-docs
-    gnome-text-editor
-    gnome-connections
-    gnome-photos
-    gnome-software
-    gnome-console
-    gnome-music
-    xterm
-    nixos-render-docs
-    epiphany
-    totem
-  ];
-
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "sclorentz";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # dev
     vim
     git
-    zed-editor
     ghostty
     oh-my-zsh
-    #alacritty
+    kitty
+    vscode
     catimg
     # bloatware
-    theme-obsidian2
-    chromium
+    #chromium
+    firefox
     nix-software-center
     vaapiVdpau
     loupe
@@ -276,44 +218,32 @@ in
     image-roll
     gnome-tweaks
     spot
-    imagemagick
     # sys
     neofetch
     nautilus-python
     home-manager
-    swaylock
     gsettings-desktop-schemas
+    hyprland
+    waybar
+    wofi
+    sddm
+    brightnessctl
+    grim
+    slurp
+    wl-clipboard
+    pamixer
+    playerctl
+    xdg-utils
+    xwayland
     # libs
     ffmpeg
     libva
-    gnome-shell
-    # themes & fonts & cursors
-    whitesur-icon-theme
-    whitesur-cursors
-    layan-gtk-theme
-    font-awesome
-    # extensions
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.logo-menu
-    gnomeExtensions.burn-my-windows
-    gnomeExtensions.rounded-window-corners-reborn
-    gnomeExtensions.dash2dock-lite
-    gnomeExtensions.keep-pinned-apps-in-appgrid
-    gnomeExtensions.window-title-is-back
-    # non enabled by default extensions
-    gnomeExtensions.user-themes
-    gnomeExtensions.just-perfection
-    gnomeExtensions.user-avatar-in-quick-settings
-    gnomeExtensions.tweaks-in-system-menu
-    #gnomeExtensions.compiz-windows-effect
-    gnomeExtensions.one-click-bios
-    gnomeExtensions.top-bar-organizer
-    gnomeExtensions.dash-to-dock
+    imagemagick
   ];
 
   xdg.mime.defaultApplications = {
-    "text/*" = "zed-editor.desktop";
-    "application/x-zerosize" = "zed-editor.desktop";
+    "text/*" = "code.desktop";
+    "application/x-zerosize" = "code.desktop";
     "application/xhtml+xml" = "chromium.desktop";
     "application/pdf" = "chromium.desktop";
     "x-scheme-handler/https" = "chromium.desktop";
@@ -324,8 +254,11 @@ in
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-    config.common.default = "gnome";
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+    config.common.default = "*";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
