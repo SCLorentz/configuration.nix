@@ -1,0 +1,5 @@
+zstyle ':completion:*' insert-unambiguous false
+zstyle :compinstall filename '/home/sclorentz/.zshrc'
+
+autoload -Uz compinit
+compinit
