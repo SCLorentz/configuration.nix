@@ -1,8 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-# sudo nixos-rebuild switch
-
 { config, pkgs, lib, ... }:
 let
   nix-software-center = import (pkgs.fetchFromGitHub {
@@ -11,12 +6,10 @@ let
     rev = "0.1.2";
     sha256 = "xiqF1mP8wFubdsAQ1BmfjzCgOD3YZf7EGWl9i69FTls=";
   }) {};
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
 in
 {
   imports = [
     ./hardware-configuration.nix
-    (import "${home-manager}/nixos")
   ];
 
   boot = {
@@ -37,16 +30,18 @@ in
       theme = "fade-in";
     };
 
-    #consoleLogLevel = 0;
-    #kernelParams = [
-      #"quiet"
-      #"udev.log_level=3"
-      #"rd.systemd.show_status=false"
-      #"rd.udev.log_level=3"
-      #"splash"
-    #];
-    #initrd.verbose = false;
+    consoleLogLevel = 0;
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "splash"
+    ];
+    initrd.verbose = false;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   services = {
     zfs = {
@@ -66,9 +61,11 @@ in
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+
     displayManager = {
       defaultSession = "hyprland";
       sddm.enable = true;
+      sddm.package = pkgs.kdePackages.sddm;
       sddm.wayland.enable = true;
       #autoLogin = {
         #enable = true;
@@ -105,86 +102,24 @@ in
 
   users.defaultUserShell = pkgs.zsh;
 
-  # programs.sway.enable = true;
-  # virtualisation.waydroid.enable = true;
-
-  programs.chromium = {
-    enable = true;
-    extensions = [
-      "glloabhodjfmeoccmdngmhkpmdlakfbn"    # material you
-      "gighmmpiobklfepjocnamgkkbiglidom"    # adBlock
-    ];
-    initialPrefs = {
-      "first_run_tabs" = [
-          "https://sclorentz.github.io/"
-        ];
-    };
-  };
-
-  # Habilita Hyprland
   programs.hyprland.enable = true;
 
-  # Outros ajustes úteis (opcional)
   networking = {
     hostId = "deadbeef";
     hostName = "nixos";
     networkmanager.enable = true;
   };
 
-  # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
-  # Configure console keymap
   console.keyMap = "br-abnt2";
 
-  # Configuração de fontes
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      liberation_ttf
-      fira-code
-      fira-code-symbols
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "Liberation Serif" ];
-        sansSerif = [ "Liberation Sans" ];
-        monospace = [ "Liberation Mono" ];
-      };
-      enable = true;
-    };
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    chromium = {
-      commandLineArgs = "--use-system-title-bar --enable-features=UseOzonePlatform --ozone-platform=wayland --gtk-version=4 --enable-features=OverlayScrollbar";
-    };
-  };
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
   users.users.new_user = {
     isNormalUser = true;
     description = "";
-    initialPassword = "123";
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
   };
-
-  home-manager.users.new_user = {
-    home.stateVersion = "18.09";
-    home.username = "new_user";
-    home.homeDirectory = "/home/new_user";
-
-    dconf = { };
-  };
-
-  #gtk.theme.package = "Layan-Dark";
 
   users.users.sclorentz = {
     isNormalUser = true;
@@ -196,37 +131,24 @@ in
     ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     # dev
     vim
     git
-    ghostty
     oh-my-zsh
     kitty
     vscode
     catimg
     # bloatware
-    #chromium
     firefox
-    nix-software-center
-    vaapiVdpau
-    loupe
-    celluloid
-    musicpod
-    image-roll
-    gnome-tweaks
-    spot
     # sys
+    eza
+    kdePackages.dolphin
     neofetch
-    nautilus-python
     home-manager
-    gsettings-desktop-schemas
     hyprland
     waybar
     wofi
-    sddm
     brightnessctl
     grim
     slurp
@@ -261,6 +183,8 @@ in
     config.common.default = "*";
   };
 
+  disabledModules = [ "services/mako.nix" ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -277,5 +201,6 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
+# Edit this configuration file to define what should be installed on   
