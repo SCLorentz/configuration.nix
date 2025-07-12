@@ -9,3 +9,7 @@ sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix --show-tr
 ```shell
 sudo nix-collect-garbage -d
 ```
+
+```shell
+killall waybar && waybar & disown
+```
