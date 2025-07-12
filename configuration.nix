@@ -6,6 +6,45 @@ let
     rev = "0.1.2";
     sha256 = "xiqF1mP8wFubdsAQ1BmfjzCgOD3YZf7EGWl9i69FTls=";
   }) {};
+  materialIconsFont = pkgs.stdenv.mkDerivation {
+    name = "material-icons-font";
+    src = pkgs.fetchurl {
+      url = "https://github.com/google/material-design-icons/raw/master/font/MaterialIcons-Regular.ttf";
+      sha256 = "1npdbcbyg6cqwnnm8fb2bfqzpwxhnxv38my8waj0kzyjpl49y57g"; # atualize usando nix-prefetch-url
+    };
+
+    dontUnpack = true;
+
+    installPhase = ''
+      mkdir -p $out/share/fonts/truetype
+      cp $src $out/share/fonts/truetype/MaterialIcons-Regular.ttf
+    '';
+  };
+  
+  dotfiles = ./dotfiles;
+
+  listRecursive = path:
+    let
+      entries = builtins.readDir path;
+    in
+      lib.flatten (lib.mapAttrsToList (name: type:
+        let
+          fullPath = "${path}/${name}";
+        in
+          if type == "directory"
+          then listRecursive fullPath
+          else [{
+            source = fullPath;
+            target = builtins.toString (lib.removePrefix "${toString dotfiles}/" (toString fullPath));
+          }]
+      ) entries);
+
+  etcFiles = listRecursive dotfiles;
+
+  etcMapped = builtins.listToAttrs (map (entry: {
+    name = "xdg/${entry.target}";
+    value.source = entry.source;
+  }) etcFiles);
 in
 {
   imports = [
@@ -43,6 +82,24 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  fonts = {
+    enableDefaultPackages = true;
+
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrainsMono Nerd Font Mono" ];
+        sansSerif = [ "Roboto" ];
+      };
+    };
+
+    packages = with pkgs; [
+      (nerdfonts.override { fonts=[ "JetBrainsMono" ]; })
+      roboto
+      materialIconsFont
+    ];
+  };
+
   services = {
     zfs = {
       autoScrub.enable = true;
@@ -74,7 +131,15 @@ in
     };
     libinput.enable = true;
     printing.enable = true;
-    flatpak.enable = true;
+  };
+
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "browser.aboutConfig.showWarning" = false;
+      "browser.tabs.inTitlebar" = 0;
+      "browser.theme.content-theme" = 0;
+    };
   };
 
   programs.zsh = {
@@ -87,7 +152,6 @@ in
     ohMyZsh.plugins = [
       "git"
       "alias-finder"
-      "catimg"
       "composer"
       "docker"
       "emoji"
@@ -97,12 +161,27 @@ in
       "sudo"
       "ssh"
       "safe-paste"
+      "eza"
+      "kitty"
     ];
   };
 
   users.defaultUserShell = pkgs.zsh;
 
   programs.hyprland.enable = true;
+
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
 
   networking = {
     hostId = "deadbeef";
@@ -140,13 +219,25 @@ in
     vscode
     catimg
     # bloatware
-    firefox
+    process-viewer
+    nomacs
+    vlc
+    prismlauncher
+    cmatrix
     # sys
+    yad
+    brightnessctl
+    pavucontrol
+    wttrbar
+    duf
     eza
     kdePackages.dolphin
+    kdePackages.qtsvg
+    kdePackages.kio-fuse
+    kdePackages.kio-extras
     neofetch
-    home-manager
     hyprland
+    hyprpaper
     waybar
     wofi
     brightnessctl
@@ -155,7 +246,6 @@ in
     wl-clipboard
     pamixer
     playerctl
-    xdg-utils
     xwayland
     # libs
     ffmpeg
@@ -185,22 +275,5 @@ in
 
   disabledModules = [ "services/mako.nix" ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # services.openssh.enable = true;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05";
 }
-# Edit this configuration file to define what should be installed on   
