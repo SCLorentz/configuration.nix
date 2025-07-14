@@ -13,3 +13,7 @@ sudo nix-collect-garbage -d
 ```shell
 killall waybar && waybar & disown
 ```
+
+```shell
+sudo nixos-rebuild switch --flake .#
+```
