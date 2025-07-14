@@ -1,0 +1,15 @@
+2025-07-12 15:53:39.036 [info] Extension host with pid 2078 started
+2025-07-12 15:53:39.036 [info] Skipping acquiring lock for /home/sclorentz/.config/Code/User/workspaceStorage/5a27e3e5f410ce4fda04cdd272e5a745.
+2025-07-12 15:53:39.509 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2025-07-12 15:53:39.606 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-07-12 15:53:39.689 [info] ExtensionService#_doActivateExtension vscode.css-language-features, startup: false, activationEvent: 'onLanguage:css'
+2025-07-12 15:53:40.370 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2025-07-12 15:53:40.487 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2025-07-12 15:53:40.683 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-07-12 15:53:40.937 [info] Eager extensions activated
+2025-07-12 15:53:40.975 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 15:53:40.982 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 15:53:41.014 [info] ExtensionService#_doActivateExtension miguelsolorio.symbols, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 15:53:42.738 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 15:53:42.757 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 15:53:42.881 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'

@@ -1,0 +1,58 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "modules-left": ["hyprland/workspaces", "custom/sep", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "pulseaudio",
+    "battery",
+    "network",
+    "custom/sep",
+    "tray"
+  ],
+
+  "custom/sep": {
+    "format": "",
+    "interval": 0
+  },
+
+  "clock": {
+    "format": " {:%H:%M}  {:%d/%m}",
+    "tooltip-format": "<big>{:%A, %d de %B de %Y}</big>",
+    "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+    "interval": 1
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", ""],
+    "interval": 30
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+
+  "custom/volume": {
+    "format": " {output}%",
+    "exec": "pamixer --get-volume",
+    "interval": 2,
+    "on-click": "pavucontrol"
+  },
+
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": "󰈀 {ipaddr}",
+    "format-disconnected": "󰖪 Offline"
+  },
+
+  "tray": {
+    "spacing": 10
+  }
+}
+

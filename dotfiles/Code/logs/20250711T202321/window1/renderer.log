@@ -1,0 +1,9 @@
+2025-07-11 20:23:22.482 [warning] Via 'product.json#extensionEnabledApiProposals' extension 'ms-python.python' wants API proposal 'terminalShellType' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2025-07-11 20:23:22.483 [warning] Via 'product.json#extensionEnabledApiProposals' extension 'ms-python.vscode-python-envs' wants API proposal 'terminalShellType' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2025-07-11 20:23:22.484 [warning] Via 'product.json#extensionEnabledApiProposals' extension 'github.copilot-chat' wants API proposal 'chatReadonlyPromptReference' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.
+2025-07-11 20:23:23.611 [info] Started local extension host with pid 16353.
+2025-07-11 20:23:26.699 [info] Settings Sync: Account status changed from uninitialized to unavailable
+2025-07-11 20:23:27.584 [info] [perf] Render performance baseline is 108ms
+2025-07-11 20:23:54.533 [info] [Extensions]: Checking for updates. Reason: Product update
+2025-07-11 20:25:08.940 [error] No default agent contributed: CodeExpectedError: No default agent contributed
+    at _Z.Z (vscode-file://vscode-app/nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1965:31346)

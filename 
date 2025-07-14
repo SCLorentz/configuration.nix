@@ -1,0 +1,243 @@
+{ config, pkgs, lib, ... }:
+let
+  nix-software-center = import (pkgs.fetchFromGitHub {
+    owner = "snowfallorg";
+    repo = "nix-software-center";
+    rev = "0.1.2";
+    sha256 = "xiqF1mP8wFubdsAQ1BmfjzCgOD3YZf7EGWl9i69FTls=";
+  }) {};
+  dotfiles = ./dotfiles;
+
+  listRecursive = path:
+    let
+      entries = builtins.readDir path;
+    in
+      lib.flatten (lib.mapAttrsToList (name: type:
+        let
+          fullPath = "${path}/${name}";
+        in
+          if type == "directory"
+          then listRecursive fullPath
+          else [{
+            source = fullPath;
+            target = builtins.toString (lib.removePrefix "${toString dotfiles}/" (toString fullPath));
+          }]
+      ) entries);
+
+  etcFiles = listRecursive dotfiles;
+
+  etcMapped = builtins.listToAttrs (map (entry: {
+    name = "xdg/${entry.target}";
+    value.source = entry.source;
+  }) etcFiles);
+in
+{
+  imports = [
+	./hardware-configuration.nix
+	./modules/system.nix
+	./modules/users.nix
+	./modules/desktop.nix
+	./modules/programs.nix
+  ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  fonts = {
+    enableDefaultPackages = true;
+
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrainsMono Nerd Font Mono" ];
+        sansSerif = [ "Roboto" ];
+      };
+    };
+
+    packages = with pkgs; [
+      	pkgs.nerd-fonts.jetbrains-mono
+	roboto
+    ];
+  };
+
+  services = {
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+      jack.enable = true;
+    };
+    displayManager = {
+      	defaultSession = "hyprland";
+	sddm = {
+      	  enable = true;
+      	  theme = "sugar-dark";
+      	  package = pkgs.libsForQt5.sddm;
+	  wayland.enable = true;
+    	};
+    };
+    libinput.enable = true;
+    printing.enable = true;
+  };
+
+  programs = {
+    firefox = {
+      enable = true;
+      preferences = {
+        "browser.aboutConfig.showWarning" = false;
+        "browser.tabs.inTitlebar" = 1;
+        "browser.theme.content-theme" = -2;
+      };
+    };
+
+    zsh = {
+      enable = true;
+      ohMyZsh.enable = true;
+      ohMyZsh.theme = "robbyrussell";
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+
+      ohMyZsh.plugins = [
+	"git"
+	"alias-finder"
+	"composer"
+	"docker"
+	"emoji"
+	"history"
+	"rust"
+	"1password"
+	"sudo"
+        "ssh"
+        "safe-paste"
+        "eza"
+        "kitty"
+      ];
+    };
+  };
+
+  users.defaultUserShell = pkgs.zsh;
+
+  programs.hyprland.enable = true;
+  programs.hyprlock.enable = true;
+
+  programs.steam = {
+    	enable = true;
+    	gamescopeSession.enable = true;
+    	remotePlay.openFirewall = true;
+    	dedicatedServer.openFirewall = true;
+  };
+
+  qt = {
+    	enable = true;
+    	platformTheme = "gnome";
+    	style = "adwaita-dark";
+  };
+
+  security.rtkit.enable = true;
+
+  users.users.new_user = {
+    	isNormalUser = true;
+    	description  = "";
+  };
+
+  users.users.sclorentz = {
+    	isNormalUser = true;
+    	description  = "Felipe Lorentz";
+    	extraGroups  = [ "networkmanager" "wheel" ];
+  };
+
+  environment.systemPackages = with pkgs; [
+    	# Shell
+    	vim
+    	git
+    	oh-my-zsh
+    	kitty
+    	nixos-generators
+	android-tools
+	duf
+	eza
+    	# bloatware
+	sddm-sugar-dark
+	vscode
+    	process-viewer
+    	nomacs
+    	vlc
+	cmatrix
+	## Games
+    	prismlauncher
+    	graalvm-ce
+    	# sys
+	## Qt
+	qt5.qtquickcontrols2
+	qt5.qtgraphicaleffects
+	qt5.qtquickcontrols
+	qt5.qtbase
+	qt5.qtsvg
+	qt5.qtdeclarative
+	qt5.qtgraphicaleffects
+	## KDE
+	kdePackages.dolphin
+	kdePackages.qtsvg
+	kdePackages.kio-fuse
+	kdePackages.kio-extras
+	neofetch
+	## Hyprland
+    	hyprland
+    	hyprpaper
+    	waybar
+    	wofi
+    	brightnessctl
+    	grim
+    	slurp
+    	wl-clipboard
+    	pamixer
+    	playerctl
+    	xwayland
+	yad
+	brightnessctl
+	pavucontrol
+	wttrbar
+    	# libs
+    	ffmpeg
+    	libva
+    	imagemagick
+  ];
+
+  xdg.mime.defaultApplications = {
+    "text/*" = "code.desktop";
+    "application/x-zerosize" = "code.desktop";
+    "application/xhtml+xml" = "chromium.desktop";
+    "application/pdf" = "chromium.desktop";
+    "x-scheme-handler/https" = "chromium.desktop";
+    "x-scheme-handler/http" = "chromium.desktop";
+    "x-scheme-handler/ftp" = "chromium.desktop";
+    "x-scheme-handler/chrome" = "chromium.desktop";
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+    config.common.default = "*";
+  };
+
+  disabledModules = [ "services/mako.nix" ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # services.openssh.enable = true;
+
+  system.stateVersion = "25.05";
+}

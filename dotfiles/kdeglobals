@@ -1,0 +1,6 @@
+[KDE]
+ShowDeleteCommand=false
+
+[PreviewSettings]
+EnableRemoteFolderThumbnail=true
+MaximumRemoteSize=0

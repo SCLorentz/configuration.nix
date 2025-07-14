@@ -1,0 +1,41 @@
+2025-07-11 20:23:25.328 [info] Extension host with pid 16353 started
+2025-07-11 20:23:25.709 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2025-07-11 20:23:25.842 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-07-11 20:23:26.170 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*'
+2025-07-11 20:23:26.195 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-07-11 20:23:26.355 [info] Eager extensions activated
+2025-07-11 20:23:26.371 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-07-11 20:23:26.376 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-07-11 20:23:26.548 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-11 20:23:26.570 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-11 20:23:26.730 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-11 20:24:28.504 [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: 'api', root cause: vscode.github
+2025-07-11 20:24:36.653 [info] ExtensionService#_doActivateExtension drcika.apc-extension, startup: false, activationEvent: 'onStartupFinished'
+2025-07-11 20:24:36.671 [error] Activating extension drcika.apc-extension failed due to an error:
+2025-07-11 20:24:36.671 [error] TypeError: Cannot read properties of undefined (reading 'filename')
+	at Object.<anonymous> (/home/sclorentz/.vscode/extensions/drcika.apc-extension-0.4.1/dist/patch.js:17:52)
+	at Module._compile (node:internal/modules/cjs/loader:1484:14)
+	at Module._extensions..js (node:internal/modules/cjs/loader:1564:10)
+	at Module.load (node:internal/modules/cjs/loader:1295:32)
+	at Module._load (node:internal/modules/cjs/loader:1111:12)
+	at c._load (node:electron/js2c/node_init:2:16955)
+	at e._load (file:///nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:197:1509)
+	at t._load (file:///nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:183:22390)
+	at i._load (file:///nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:175:24781)
+	at Module.require (node:internal/modules/cjs/loader:1318:19)
+	at require (node:internal/modules/helpers:179:18)
+	at Object.<anonymous> (/home/sclorentz/.vscode/extensions/drcika.apc-extension-0.4.1/dist/extension.js:7:17)
+	at Module._compile (node:internal/modules/cjs/loader:1484:14)
+	at Module._extensions..js (node:internal/modules/cjs/loader:1564:10)
+	at Module.load (node:internal/modules/cjs/loader:1295:32)
+	at Module._load (node:internal/modules/cjs/loader:1111:12)
+	at c._load (node:electron/js2c/node_init:2:16955)
+	at e._load (file:///nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:197:1509)
+	at t._load (file:///nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:183:22390)
+	at i._load (file:///nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:175:24781)
+	at Module.require (node:internal/modules/cjs/loader:1318:19)
+	at require (node:internal/modules/helpers:179:18)
+	at vV.xb (file:///nix/store/fy8fpckq8q2k2ldhhmf2q3m81mgk2d5f-vscode-1.99.3/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:183:23710)
+	at async Promise.all (index 0)
+2025-07-11 20:25:53.820 [info] Extension host terminating: renderer closed the MessagePort
+2025-07-11 20:25:53.891 [info] Extension host with pid 16353 exiting with code 0

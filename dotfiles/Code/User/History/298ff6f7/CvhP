@@ -1,0 +1,59 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "modules-left": ["hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "pulseaudio",
+    "battery",
+    "network",
+    "tray",
+    "hyprland/workspaces"
+  ],
+
+  "hyprland/window": {
+    "format": "  {}",
+    "rewrite": {
+      "(.*) - Mozilla Firefox": "🌐 $1",
+      "(.*) - nvim": " $1",
+      "(.*) - kitty": " $1"
+    },
+    "max-length": 50,
+    "tooltip": true,
+    "tooltip-format": "{}"
+  },
+
+  "clock": {
+    "format": "{:%a %d %b %H:%M}",
+    "tooltip-format": "<big>{:%A, %d de %B de %Y}</big>",
+    "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+    "interval": 1
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "interval": 30
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "on-click": "sh -c 'yad --on-top --undecorated --skip-taskbar --no-buttons --mouse --scale --min-value=0 --max-value=100 --value=$(pamixer --get-volume) --title=\"Volume\" --on-top --width=300 --undecorated --mouse --no-buttons --print-partial | while read vol; do pamixer --set-volume \"$vol\"; done'"
+  },
+
+  "network": {
+    "format-wifi": "{essid} ",
+    "format-ethernet": "{ipaddr} 󰈀",
+    "format-disconnected": "Offline 󰖪"
+  },
+
+  "tray": {
+    "spacing": 10
+  }
+}
+

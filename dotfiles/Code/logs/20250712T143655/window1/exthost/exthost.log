@@ -1,0 +1,32 @@
+2025-07-12 14:36:59.968 [info] Extension host with pid 4587 started
+2025-07-12 14:37:00.255 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2025-07-12 14:37:00.376 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-07-12 14:37:00.838 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2025-07-12 14:37:01.025 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2025-07-12 14:37:01.227 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-07-12 14:37:01.656 [info] Eager extensions activated
+2025-07-12 14:37:01.735 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 14:37:01.747 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 14:37:01.809 [info] ExtensionService#_doActivateExtension miguelsolorio.symbols, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 14:37:01.973 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 14:37:02.010 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 14:37:02.190 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 14:37:27.536 [info] Extension host terminating: renderer closed the MessagePort
+2025-07-12 14:37:27.597 [info] Extension host with pid 4587 exiting with code 0
+2025-07-12 14:37:30.196 [info] Extension host with pid 4896 started
+2025-07-12 14:37:30.196 [info] Skipping acquiring lock for /home/sclorentz/.config/Code/User/workspaceStorage/5a27e3e5f410ce4fda04cdd272e5a745.
+2025-07-12 14:37:30.238 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2025-07-12 14:37:30.320 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 14:37:30.335 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 14:37:30.500 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-12 14:37:30.654 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-07-12 14:37:31.261 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*'
+2025-07-12 14:37:31.272 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-07-12 14:37:31.523 [info] Eager extensions activated
+2025-07-12 14:37:31.591 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 14:37:31.599 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 14:37:31.648 [info] ExtensionService#_doActivateExtension miguelsolorio.symbols, startup: false, activationEvent: 'onStartupFinished'
+2025-07-12 14:37:33.494 [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: 'api', root cause: vscode.github
+2025-07-12 14:37:36.383 [info] ExtensionService#_doActivateExtension vscode.css-language-features, startup: false, activationEvent: 'onLanguage:css'
+2025-07-12 14:38:14.701 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+2025-07-12 14:38:14.732 [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onLanguage:json'

@@ -1,0 +1,7 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.activityBar.location": "top",
+    "window.controlsStyle": "hidden",
+    "window.titleBarStyle": "custom",
+    "workbench.productIconTheme": "icons-carbon"
+}
