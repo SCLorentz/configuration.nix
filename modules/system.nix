@@ -20,7 +20,13 @@
 	  devNodes = "/dev/disk/by-uuid";
 	};
 	supportedFilesystems = [ "zfs" ];
-	kernelModules = [ "kvm-intel" "zfs" ];
+	kernelModules = [
+	  "kvm-intel"
+	  "zfs"
+	  "binder"
+	  "binderfs"
+	  "ashmem_linux"
+	];
 	initrd.supportedFilesystems = [ "zfs" ];
 	
 	plymouth = { enable = true; theme = "fade-in"; };
@@ -34,6 +40,8 @@
 	  "splash"
 	];
 	initrd.verbose = false;
+
+	kernelPackages = pkgs.linuxPackages_zen;
   };
 
   services = {

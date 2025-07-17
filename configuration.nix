@@ -38,6 +38,7 @@ in
 	#./modules/users.nix
 	#./modules/desktop.nix
 	./modules/programs.nix
+	#./modules/android.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -111,9 +112,11 @@ in
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
+      #pkgs.xdg-desktop-portal-gtk
+      pkgs.kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-hyprland
     ];
+    config.hyprland.preferred = [ "hyprland" "gtk" ];
     config.common.default = "*";
   };
 

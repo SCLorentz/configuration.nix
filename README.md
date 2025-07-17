@@ -1,5 +1,7 @@
 # configuration.nix
 
+thanks https://github.com/JaKooLit
+
 ## Todo:
 
 - [ ] firefox patched

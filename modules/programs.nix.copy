@@ -1,20 +1,18 @@
 { config, pkgs, lib, ... }:
-#let
-#firefoxBase = pkgs.firefox-unwrapped.overrideAttrs (old: {
-#    	postFixup = ''
-# 	     	wrapProgram $out/bin/firefox \
-#        	--set MOZ_ENABLE_WAYLAND 1 \
-#		--set MOZ_USE_XINPUT2 1
-#	'';
-#});
-#in {
 {
 environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+nixpkgs.overlays = [
+	(final: prev: {
+		firefox.overrideAttrs (prev: {
+  			patches = prev.patches or [] ++ [ ];
+		})
+	})
+];
 
 programs = {
 	firefox = {
 		enable = true;
-		#package = pkgs.wrapFirefox firefoxBase {};
 		policies = {
 			DisableTelemetry = true;
 			BlockAboutConfig = true;
@@ -70,29 +68,14 @@ programs = {
 	neovim.enable = true;
 };
 
-environment.variables = {
-	QT_STYLE_OVERRIDE = lib.mkForce null;
-	QT_QPA_PLATFORMTHEME = "qt6ct";
-	QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-	MOZ_ENABLE_WAYLAND = "1";
-	EDITOR = "nvim";
-};
-
+environment.variables.EDITOR = "nvim";
 users.defaultUserShell = pkgs.zsh;
 
-nixpkgs.config.qt6 = {
+qt = {
 	enable = true;
-	platformTheme = "qt6ct";
-	style = {
-    		package = pkgs.utterly-nord-plasma;
-      		name = "Utterly Nord Plasma";
-	};
-	cursorTheme = "default";
+	platformTheme = "gnome";
+	style = "adwaita-dark";
 };
-
-## spotify ports
-networking.firewall.allowedTCPPorts = [ 57621 ];
-networking.firewall.allowedUDPPorts = [ 5353 ];
 
 environment.systemPackages = with pkgs; [
 	# Shell
@@ -105,16 +88,11 @@ environment.systemPackages = with pkgs; [
 	eza
 	tmux
 	# bloatware
-	## themes
 	sddm-sugar-dark
-	gruvbox-plus-icons
-	## viewer
 	vscode
 	process-viewer
 	nomacs
 	vlc
-	## social
-	spotify
 	## Games
 	prismlauncher
 	graalvm-ce
@@ -127,11 +105,6 @@ environment.systemPackages = with pkgs; [
 	qt5.qtsvg
 	qt5.qtdeclarative
 	qt5.qtgraphicaleffects
-	qt5.qtwayland
-	libsForQt5.qtstyleplugin-kvantum
-    	libsForQt5.qt5ct
-	qt6ct
-      	qt6.qtwayland
 	## KDE
 	kdePackages.dolphin
 	kdePackages.qtsvg
