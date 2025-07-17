@@ -9,6 +9,7 @@ eval "$(starship init zsh)"
 alias ls='eza -a --icons'
 alias ll='eza -al --icons'
 alias lt='eza -a --tree --level=1 --icons'
+alias code='codium'
 
 # Starting down here, are set in user.nix
 

@@ -1,22 +1,10 @@
 { config, pkgs, lib, ... }:
-#let
-#firefoxBase = pkgs.firefox-unwrapped.overrideAttrs (old: {
-#    	postFixup = ''
-# 	     	wrapProgram $out/bin/firefox \
-#        	--set MOZ_ENABLE_WAYLAND 1 \
-#		--set MOZ_USE_XINPUT2 1
-#	'';
-#});
-#in {
 {
-environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
 security.sudo-rs.enable = true;
 
 programs = {
 	firefox = {
 		enable = true;
-		#package = pkgs.wrapFirefox firefoxBase {};
 		policies = {
 			DisableTelemetry = true;
 			BlockAboutConfig = true;
@@ -108,22 +96,23 @@ environment.systemPackages = with pkgs; [
 	android-tools
 	duf
 	eza
-	tmux
 	# bloatware
 	## themes
 	sddm-sugar-dark
 	gruvbox-plus-icons
 	## viewer
-	vscode
 	process-viewer
 	nomacs
 	vlc
+	vscodium
 	## social
 	spotify
 	## Games
 	prismlauncher
 	graalvm-ce
 	# sys
+	rustc
+	cargo
 	## Qt
 	qt5.qtquickcontrols2
 	qt5.qtgraphicaleffects
