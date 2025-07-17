@@ -11,6 +11,8 @@
 {
 environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+security.sudo-rs.enable = true;
+
 programs = {
 	firefox = {
 		enable = true;
@@ -75,6 +77,7 @@ environment.variables = {
 	QT_QPA_PLATFORMTHEME = "qt6ct";
 	QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 	MOZ_ENABLE_WAYLAND = "1";
+	MOZ_USE_XINPUT2 = "1";
 	EDITOR = "nvim";
 };
 
@@ -91,8 +94,10 @@ nixpkgs.config.qt6 = {
 };
 
 ## spotify ports
-networking.firewall.allowedTCPPorts = [ 57621 ];
-networking.firewall.allowedUDPPorts = [ 5353 ];
+networking.firewall = {
+	allowedTCPPorts = [ 57621 ];
+	allowedUDPPorts = [ 5353 ];
+};
 
 environment.systemPackages = with pkgs; [
 	# Shell
