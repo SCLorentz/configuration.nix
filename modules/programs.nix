@@ -96,6 +96,16 @@ environment.systemPackages = with pkgs; [
 	android-tools
 	duf
 	eza
+	## C/C++
+	clang
+	lld
+	llvmPackages.libcxx
+	cmake
+	pkg-config
+	gnumake
+	autoconf
+	automake
+	libtool
 	# bloatware
 	## themes
 	sddm-sugar-dark
