@@ -1,0 +1,45 @@
+format = """
+[](#7aa2f7)\
+$username\
+[](bg:#bb9af7 fg:#7aa2f7)\
+$directory\
+[](fg:#bb9af7 bg:#9ece6a)\
+$git_branch\
+$git_status\
+[](fg:#9ece6a bg:#1a1b26)\
+$cmd_duration\
+[](fg:#1a1b26)\
+\n$character
+"""
+
+# BLOCO: usuário
+[username]
+show_always = true
+style_user = "bg:#7aa2f7 fg:#1a1b26"
+format = " [$user]($style) "
+
+# BLOCO: diretório
+[directory]
+style = "bg:#bb9af7 fg:#1a1b26"
+format = " [$path]($style) "
+
+# BLOCO: Git
+[git_branch]
+style = "bg:#9ece6a fg:#1a1b26"
+format = " [$symbol$branch]($style) "
+
+[git_status]
+style = "bg:#9ece6a fg:#1a1b26"
+format = " [$all_status]($style)"
+
+# BLOCO: tempo do comando
+[cmd_duration]
+style = "bg:#1a1b26 fg:#c0caf5"
+format = " ⏱ [$duration]($style)"
+
+# SÍMBOLO FINAL (prompt)
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
+vicmd_symbol = "[](bold blue)"
+

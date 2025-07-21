@@ -39,7 +39,6 @@ programs = {
 			"emoji"
 			"history"
 			"rust"
-			"1password"
 			"sudo"
 			"ssh"
 			"safe-paste"
@@ -71,6 +70,11 @@ environment.variables = {
 
 users.defaultUserShell = pkgs.zsh;
 
+services.upower.enable = true;
+
+services.blueman.enable = true;
+hardware.bluetooth.enable = true;
+
 nixpkgs.config.qt6 = {
 	enable = true;
 	platformTheme = "qt6ct";
@@ -101,6 +105,7 @@ environment.systemPackages = with pkgs; [
 	## themes
 	sddm-sugar-dark
 	gruvbox-plus-icons
+	catppuccin
 	## viewer
 	process-viewer
 	nomacs
@@ -108,12 +113,11 @@ environment.systemPackages = with pkgs; [
 	vscodium
 	## social
 	spotify
-	## Games
-	prismlauncher
+	## langs
 	graalvm-ce
-	# sys
 	rustc
 	cargo
+	# sys
 	## Qt
 	qt5.qtquickcontrols2
 	qt5.qtgraphicaleffects
@@ -133,10 +137,14 @@ environment.systemPackages = with pkgs; [
 	kdePackages.kio-fuse
 	kdePackages.kio-extras
 	neofetch
+	# WM
 	## Hyprland
+	hyprlandPlugins.hypr-dynamic-cursors
+	nwg-dock-hyprland
+	hyprcursor
+	hyprpanel
 	hyprland
 	hyprpaper
-	waybar
 	rofi
 	brightnessctl
 	grim
@@ -150,10 +158,20 @@ environment.systemPackages = with pkgs; [
 	pavucontrol
 	wttrbar
 	cliphist
-	# libs
+	xdg-desktop-portal-hyprland
+	# libs & dependencies
 	ffmpeg
 	libva
 	imagemagick
+	wireplumber
+	libgtop
+	bluez
+	networkmanager
+	dart-sass
+	wl-clipboard
+	gvfs
+	swww
+	gtksourceview3
 ];
 }
 

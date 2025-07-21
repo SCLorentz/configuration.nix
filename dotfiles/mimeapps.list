@@ -1,0 +1,27 @@
+[Added Associations]
+application/vnd.android.package-archive=waydroid.app.install.desktop;
+application/x-extension-htm=userapp-Firefox-CTDS92.desktop;firefox.desktop;
+application/x-extension-html=userapp-Firefox-CTDS92.desktop;firefox.desktop;
+application/x-extension-shtml=userapp-Firefox-CTDS92.desktop;firefox.desktop;
+application/x-extension-xht=userapp-Firefox-CTDS92.desktop;firefox.desktop;
+application/x-extension-xhtml=userapp-Firefox-CTDS92.desktop;firefox.desktop;
+application/xhtml+xml=userapp-Firefox-CTDS92.desktop;firefox.desktop;
+text/html=userapp-Firefox-CTDS92.desktop;firefox.desktop;
+video/webm=vlc-2.desktop;
+x-scheme-handler/chrome=firefox.desktop;userapp-Firefox-CTDS92.desktop;
+x-scheme-handler/http=firefox.desktop;userapp-Firefox-CTDS92.desktop;
+x-scheme-handler/https=firefox.desktop;userapp-Firefox-CTDS92.desktop;
+
+[Default Applications]
+application/vnd.android.package-archive=waydroid.app.install.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+text/html=firefox.desktop
+video/webm=vlc-2.desktop;
+x-scheme-handler/chrome=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
