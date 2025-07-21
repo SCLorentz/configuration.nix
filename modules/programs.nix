@@ -96,16 +96,7 @@ environment.systemPackages = with pkgs; [
 	android-tools
 	duf
 	eza
-	## C/C++
-	clang
-	lld
-	llvmPackages.libcxx
-	cmake
-	pkg-config
-	gnumake
-	autoconf
-	automake
-	libtool
+	greetd.gtkgreet
 	# bloatware
 	## themes
 	sddm-sugar-dark
@@ -146,7 +137,7 @@ environment.systemPackages = with pkgs; [
 	hyprland
 	hyprpaper
 	waybar
-	wofi
+	rofi
 	brightnessctl
 	grim
 	slurp

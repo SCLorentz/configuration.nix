@@ -76,28 +76,35 @@ in
     displayManager = {
       	defaultSession = "hyprland";
 	sddm = {
-      	  enable = true;
-      	  theme = "sugar-dark";
-      	  package = pkgs.libsForQt5.sddm;
-	  wayland.enable = true;
+      		enable = true;
+      		theme = "sugar-dark";
+      		package = pkgs.libsForQt5.sddm;
+		wayland.enable = true;
     	};
     };
+    #greetd = {
+  	#enable = true;
+  	#settings.default_session = {
+		#command = "${pkgs.hyprland}/bin/Hyprland";
+   		#user = "greeter";
+  	#};
+    #};
     libinput.enable = true;
     printing.enable = true;
   };
 
   security.rtkit.enable = true;
 
-  users.users.new_user = {
-    	isNormalUser = true;
-    	description  = "";
-  };
-
   users.users.sclorentz = {
     	isNormalUser = true;
+	#home = "/var/lib/greetd";
+	#createHome = true;
     	description  = "Felipe Lorentz";
+	#group = "greeter";
     	extraGroups  = [ "networkmanager" "wheel" ];
   };
+
+  #users.groups.greeter = {};
 
   xdg.mime.defaultApplications = {
     "text/*" = "code.desktop";
