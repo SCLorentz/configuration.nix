@@ -1,0 +1,32 @@
+2025/06/28-21:44:34.456 697 Reusing MANIFEST /home/sclorentz/.config/chromium/Default/IndexedDB/https_app.warp.dev_0.indexeddb.leveldb/MANIFEST-000001
+2025/06/28-21:44:34.457 697 Recovering log #7
+2025/06/28-21:44:34.457 697 Reusing old log /home/sclorentz/.config/chromium/Default/IndexedDB/https_app.warp.dev_0.indexeddb.leveldb/000007.log 
+2025/06/28-21:44:34.477 698 Level-0 table #11: started
+2025/06/28-21:44:34.485 698 Level-0 table #11: 10293 bytes OK
+2025/06/28-21:44:34.492 698 Delete type=0 #7
+2025/06/28-21:44:34.495 697 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at '\x00\x05\x00\x00\x05' @ 249 : 1
+2025/06/28-21:44:34.496 697 Compacting 1@0 + 1@1 files
+2025/06/28-21:44:34.500 697 Generated table #12@0: 72 keys, 3933 bytes
+2025/06/28-21:44:34.500 697 Compacted 1@0 + 1@1 files => 3933 bytes
+2025/06/28-21:44:34.504 697 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/06/28-21:44:34.505 697 Delete type=2 #11
+2025/06/28-21:44:34.509 697 Manual compaction at level-0 from '\x00\x05\x00\x00\x05' @ 249 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/06/28-21:45:13.016 697 Level-0 table #14: started
+2025/06/28-21:45:13.021 697 Level-0 table #14: 6749 bytes OK
+2025/06/28-21:45:13.026 697 Delete type=0 #10
+2025/06/28-21:45:13.026 697 Delete type=2 #8
+2025/06/28-21:45:13.027 697 Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at '\x00\x06\x00\x00\x05' @ 318 : 1
+2025/06/28-21:45:13.027 697 Compacting 1@0 + 1@1 files
+2025/06/28-21:45:13.032 697 Generated table #15@0: 84 keys, 3988 bytes
+2025/06/28-21:45:13.033 697 Compacted 1@0 + 1@1 files => 3988 bytes
+2025/06/28-21:45:13.038 697 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/06/28-21:45:13.039 697 Delete type=2 #14
+2025/06/28-21:45:13.039 697 Manual compaction at level-0 from '\x00\x06\x00\x00\x05' @ 318 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/06/28-21:45:34.038 697 Manual compaction at level-0 from '\x00\x07\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/06/28-21:45:53.758 698 Compacting 1@1 + 1@2 files
+2025/06/28-21:45:53.767 698 Generated table #16@1: 38 keys, 3381 bytes
+2025/06/28-21:45:53.767 698 Compacted 1@1 + 1@2 files => 3381 bytes
+2025/06/28-21:45:53.771 698 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/06/28-21:45:53.772 698 Delete type=2 #15
+2025/06/28-21:45:53.773 698 Delete type=2 #5
+2025/06/28-21:45:53.773 698 Delete type=2 #12

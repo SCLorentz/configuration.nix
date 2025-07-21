@@ -1,0 +1,19 @@
+Error: the task 'C_Cpp_Runner: Build' neither specifies a command nor a dependsOn property. The task will be ignored. Its definition is:
+{
+    "type": "process",
+    "id": "process,/run/current-system/sw/bin/zsh,-c,gcc -Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -g3 -O0 -c /home/sclorentz/Documents/github/gtkgreet/gtkgreet/window.c -o ./build/Debug/window.o && gcc -Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -g3 -O0   ./build/Debug/window.o -o ./build/Debug/outDebug,",
+    "problemMatcher": [
+        "$gcc"
+    ],
+    "label": "C_Cpp_Runner: Build"
+}
+Error: the task 'C_Cpp_Runner: Build' neither specifies a command nor a dependsOn property. The task will be ignored. Its definition is:
+{
+    "type": "process",
+    "id": "process,/run/current-system/sw/bin/zsh,-c,gcc -Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -g3 -O0 -c /home/sclorentz/Documents/github/gtkgreet/gtkgreet/window.c -o ./build/Debug/window.o && gcc -Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wcast-align -Wconversion -Wsign-conversion -Wnull-dereference -g3 -O0   ./build/Debug/window.o -o ./build/Debug/outDebug,",
+    "problemMatcher": [
+        "$gcc"
+    ],
+    "label": "C_Cpp_Runner: Build"
+}
+Problem matcher {0} can't be resolved. The matcher will be ignored

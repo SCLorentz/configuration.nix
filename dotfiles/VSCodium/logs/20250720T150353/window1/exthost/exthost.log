@@ -1,0 +1,90 @@
+2025-07-20 15:03:59.885 [info] Extension host with pid 2597 started
+2025-07-20 15:03:59.885 [info] Skipping acquiring lock for /home/sclorentz/.config/VSCodium/User/workspaceStorage/231a3f420da5a307c1c61b8fc93dc72f.
+2025-07-20 15:04:00.368 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-07-20 15:04:00.426 [info] ExtensionService#_doActivateExtension cschlosser.doxdocgen, startup: false, activationEvent: 'onLanguage:c'
+2025-07-20 15:04:00.674 [info] ExtensionService#_doActivateExtension vadimcn.vscode-lldb, startup: false, activationEvent: 'onLanguage:c', root cause: franneck94.c-cpp-runner
+2025-07-20 15:04:01.081 [info] ExtensionService#_doActivateExtension franneck94.c-cpp-runner, startup: false, activationEvent: 'onLanguage:c'
+2025-07-20 15:04:01.374 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2025-07-20 15:04:01.392 [info] ExtensionService#_doActivateExtension mesonbuild.mesonbuild, startup: true, activationEvent: 'workspaceContains:meson.build'
+2025-07-20 15:04:02.389 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2025-07-20 15:04:02.588 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-07-20 15:04:02.673 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-20 15:04:02.702 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-20 15:04:02.926 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-07-20 15:04:03.502 [error] CodeExpectedError: Unable to write to Workspace Settings because C_Cpp.default.compileCommands is not a registered configuration.
+    at Sft.toConfigurationEditingError (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:8351)
+    at Sft.validate (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:11157)
+    at Sft.doWriteConfiguration (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4720)
+    at Object.factory (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4576)
+    at sy.consume (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76910)
+    at vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76725
+    at new Promise (<anonymous>)
+    at sy.queue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76649)
+    at Sft.writeConfiguration (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4545)
+    at kQs.writeConfigurationValue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:61397)
+2025-07-20 15:04:03.503 [error] CodeExpectedError: Unable to write to Workspace Settings because C_Cpp.default.configurationProvider is not a registered configuration.
+    at Sft.toConfigurationEditingError (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:8351)
+    at Sft.validate (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:11157)
+    at Sft.doWriteConfiguration (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4720)
+    at Object.factory (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4576)
+    at sy.consume (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76910)
+    at vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76725
+    at new Promise (<anonymous>)
+    at sy.queue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76649)
+    at Sft.writeConfiguration (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4545)
+    at kQs.writeConfigurationValue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:61397)
+2025-07-20 15:04:04.059 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2025-07-20 15:04:11.312 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-07-20 15:04:11.327 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-07-20 15:04:11.384 [info] ExtensionService#_doActivateExtension aaron-bond.better-comments, startup: false, activationEvent: 'onStartupFinished'
+2025-07-20 15:04:11.399 [info] ExtensionService#_doActivateExtension franneck94.vscode-c-cpp-config, startup: false, activationEvent: 'onStartupFinished'
+2025-07-20 15:16:30.002 [info] ExtensionService#_doActivateExtension jnoortheen.nix-ide, startup: false, activationEvent: 'onLanguage:nix'
+2025-07-20 15:18:11.664 [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onTerminalQuickFixRequest:ms-vscode.npm-command'
+2025-07-20 15:54:50.098 [error] CodeExpectedError: Unable to write to Workspace Settings because C_Cpp.default.configurationProvider is not a registered configuration.
+    at Sft.toConfigurationEditingError (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:8351)
+    at Sft.validate (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:11157)
+    at Sft.doWriteConfiguration (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4720)
+    at Object.factory (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4576)
+    at sy.consume (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76910)
+    at vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76725
+    at new Promise (<anonymous>)
+    at sy.queue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:30:76649)
+    at Sft.writeConfiguration (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:4545)
+    at kQs.writeConfigurationValue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3232:61397)
+2025-07-20 16:05:59.333 [info] ExtensionService#_doActivateExtension vscode.css-language-features, startup: false, activationEvent: 'onLanguage:css'
+2025-07-20 16:44:54.640 [error] ExtensionError: Error in extension cschlosser.doxdocgen: FAILED to handle event
+	at eh.value (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:170:34201)
+	at P._deliver (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2937)
+	at P._deliverQueue (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3028)
+	at P.fire (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3364)
+	at vq.$acceptModelChanged (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:145:116818)
+	at fS._doInvokeHandler (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:125319)
+	at fS._invokeHandler (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:125063)
+	at fS._receiveRequest (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:123829)
+	at fS._receiveOneMessage (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:122655)
+	at eh.value (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:120754)
+	at P._deliver (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2937)
+	at P.fire (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3257)
+	at co.fire (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10941)
+	at eh.value (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:225:4033)
+	at P._deliver (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:2937)
+	at P.fire (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:27:3257)
+	at co.fire (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:10941)
+	at MessagePortMain.<anonymous> (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:225:2244)
+	at MessagePortMain.emit (node:events:524:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2025-07-20 16:49:37.127 [info] Extension host terminating: renderer closed the MessagePort
+2025-07-20 16:49:37.177 [error] TypeError: Cannot read properties of undefined (reading 'dispose')
+	at z4 (/home/sclorentz/.vscode-oss/extensions/jnoortheen.nix-ide-0.4.22-universal/dist/extension.js:44:45451)
+	at Object.DO (/home/sclorentz/.vscode-oss/extensions/jnoortheen.nix-ide-0.4.22-universal/dist/extension.js:44:48473)
+	at PQ._deactivate (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:14502)
+	at file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:12013
+	at Array.map (<anonymous>)
+	at PQ._deactivateAll (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:12001)
+	at PQ.terminate (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:123:12354)
+	at v8.terminate (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:124:1602)
+	at ds (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:225:5829)
+	at MessagePortMain.<anonymous> (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:225:2284)
+	at MessagePortMain.emit (node:events:524:28)
+	at MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+2025-07-20 16:49:37.182 [info] Extension host with pid 2597 exiting with code 0

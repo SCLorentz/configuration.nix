@@ -1,0 +1,90 @@
+2025-07-19 08:42:30.344 [info] Started local extension host with pid 1790.
+2025-07-19 08:42:30.740 [info] ComputeTargetPlatform: linux-x64
+2025-07-19 08:42:32.210 [error] Ignoring clangd.onConfigChanged.forceEnable as clangd.onConfigChanged is "prompt"
+2025-07-19 08:42:35.693 [error] [Extension Host] Sending request failed.
+2025-07-19 08:42:35.711 [error] [Extension Host] Error: Unexpected SIGPIPE
+	at process.<anonymous> (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/bootstrap-fork.js:3:11860)
+	at process.emit (node:events:524:28)
+2025-07-19 08:42:35.721 [error] [Extension Host] Sending request failed.
+2025-07-19 08:42:35.746 [error] [Extension Host] Sending request failed.
+2025-07-19 08:42:35.758 [error] [Extension Host] Sending request failed.
+2025-07-19 08:42:35.768 [error] [Extension Host] Sending request failed.
+2025-07-19 08:42:35.801 [error] An unknown error occurred. Please consult the log for more details.
+2025-07-19 08:42:43.796 [info] [perf] Render performance baseline is 149ms
+2025-07-19 13:23:03.415 [error] spawn xterm ENOENT: Error: spawn xterm ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+2025-07-19 18:33:31.707 [info] Started local extension host with pid 32672.
+2025-07-19 18:33:34.522 [error] [Extension Host] Sending request failed.
+2025-07-19 18:33:34.628 [error] [Extension Host] Sending request failed.
+2025-07-19 18:33:34.654 [error] [Extension Host] Error: Unexpected SIGPIPE
+	at process.<anonymous> (file:///nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/bootstrap-fork.js:3:11860)
+	at process.emit (node:events:524:28)
+2025-07-19 18:33:34.675 [error] [Extension Host] Sending request failed.
+2025-07-19 18:33:34.849 [error] [Extension Host] Sending request failed.
+2025-07-19 18:33:34.923 [error] [Extension Host] Sending request failed.
+2025-07-19 18:33:35.327 [error] No registered selector for ID: ms-vscode.npm-command
+2025-07-19 18:33:35.551 [error] An unknown error occurred. Please consult the log for more details.
+2025-07-19 19:25:06.306 [error] AbstractContextKeyService has been disposed: Error: AbstractContextKeyService has been disposed
+    at qTs.contextMatchesRules (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1867:27281)
+    at sq.createActionGroups (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:131201)
+    at nle.getActions (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:133750)
+    at TD._getValue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:144204)
+    at TD.handleEvent [as value] (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:31:34354)
+    at FTe._deliver (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:2956)
+    at FTe.fire (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:3277)
+    at FTe.resume (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4575)
+    at vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4932
+2025-07-19 19:25:19.148 [error] An unknown error occurred. Please consult the log for more details.
+2025-07-19 19:25:21.684 [error] An unknown error occurred. Please consult the log for more details.
+2025-07-19 19:33:16.825 [info] Started local extension host with pid 35236.
+2025-07-19 19:33:16.923 [error] AbstractContextKeyService has been disposed: Error: AbstractContextKeyService has been disposed
+    at qTs.contextMatchesRules (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1867:27281)
+    at sq.createActionGroups (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:131201)
+    at nle.getActions (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:133750)
+    at TD._getValue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:144204)
+    at TD.handleEvent [as value] (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:31:34354)
+    at FTe._deliver (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:2956)
+    at FTe.fire (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:3277)
+    at FTe.resume (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4575)
+    at vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4932
+2025-07-19 19:33:20.517 [error] No registered selector for ID: ms-vscode.npm-command
+2025-07-19 19:33:43.438 [error] AbstractContextKeyService has been disposed: Error: AbstractContextKeyService has been disposed
+    at qTs.contextMatchesRules (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1867:27281)
+    at sq.createActionGroups (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:131201)
+    at nle.getActions (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:133750)
+    at TD._getValue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:144204)
+    at TD.handleEvent [as value] (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:31:34354)
+    at FTe._deliver (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:2956)
+    at FTe.fire (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:3277)
+    at FTe.resume (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4575)
+    at vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4932
+2025-07-19 19:33:43.827 [error] [Extension Host] /bin/sh: line 1: gcc: command not found
+2025-07-19 22:13:27.089 [info] Started local extension host with pid 43607.
+2025-07-19 22:13:27.122 [error] AbstractContextKeyService has been disposed: Error: AbstractContextKeyService has been disposed
+    at qTs.contextMatchesRules (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1867:27281)
+    at sq.createActionGroups (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:131201)
+    at nle.getActions (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:133750)
+    at TD._getValue (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:409:144204)
+    at TD.handleEvent [as value] (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:31:34354)
+    at FTe._deliver (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:2956)
+    at FTe.fire (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:3277)
+    at FTe.resume (vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4575)
+    at vscode-file://vscode-app/nix/store/hkli1fcbdw2xqqs23clp6f6djac2dh1q-vscodium-1.100.13210/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:29:4932
+2025-07-19 22:13:31.069 [error] [Extension Host] /bin/sh: line 1: gcc: command not found
+2025-07-19 22:13:32.154 [error] No registered selector for ID: ms-vscode.npm-command
+2025-07-19 22:13:41.202 [error] An unknown error occurred. Please consult the log for more details.
+2025-07-19 23:31:02.808 [info] Started local extension host with pid 44540.
+2025-07-19 23:31:06.992 [error] No registered selector for ID: ms-vscode.npm-command
+2025-07-19 23:31:22.643 [error] An unknown error occurred. Please consult the log for more details.
+2025-07-19 23:32:24.992 [info] Started local extension host with pid 44715.
+2025-07-19 23:32:27.960 [error] No registered selector for ID: ms-vscode.npm-command
+2025-07-19 23:33:23.307 [info] Started local extension host with pid 44858.
+2025-07-19 23:33:25.179 [info] ComputeTargetPlatform: linux-x64
+2025-07-19 23:33:27.832 [error] [Extension Host] /bin/sh: line 1: gcc: command not found
+2025-07-19 23:33:30.903 [info] [perf] Render performance baseline is 76ms
+2025-07-19 23:34:16.314 [info] Started local extension host with pid 44996.
+2025-07-20 12:10:51.066 [error] Unable to write to Workspace Settings because C_Cpp.default.configurationProvider is not a registered configuration.
+2025-07-20 12:41:52.797 [error] Unable to write to Workspace Settings because C_Cpp.default.compileCommands is not a registered configuration.
+2025-07-20 12:41:52.799 [error] Unable to write to Workspace Settings because C_Cpp.default.configurationProvider is not a registered configuration.

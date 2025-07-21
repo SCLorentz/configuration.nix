@@ -1,0 +1,16 @@
+{
+    "explorer.confirmDelete": false,
+    "files.autoSave": "afterDelay",
+    "clangd.path": "/home/sclorentz/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/20.1.8/clangd_20.1.8/bin/clangd",
+    "window.controlsStyle": "hidden",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
+    "mesonbuild.downloadLanguageServer": true,
+    "workbench.colorTheme": "MacOS Modern Dark - Ventura Xcode",
+    "workbench.productIconTheme": "macos-modern",
+    "workbench.activityBar.location": "top",
+    "workbench.statusBar.visible": false,
+    "workbench.navigationControl.enabled": false,
+    "workbench.panel.showLabels": false
+}

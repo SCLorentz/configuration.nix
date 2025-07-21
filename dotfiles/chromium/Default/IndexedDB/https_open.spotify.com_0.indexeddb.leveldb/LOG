@@ -1,0 +1,6 @@
+2025/04/27-16:01:02.351 5a0 Creating DB /home/sclorentz/.config/chromium/Default/IndexedDB/https_open.spotify.com_0.indexeddb.leveldb since it was missing.
+2025/04/27-16:01:02.367 5a0 Reusing MANIFEST /home/sclorentz/.config/chromium/Default/IndexedDB/https_open.spotify.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/04/27-16:01:05.719 5a0 Level-0 table #5: started
+2025/04/27-16:01:05.722 5a0 Level-0 table #5: 1419 bytes OK
+2025/04/27-16:01:05.726 5a0 Delete type=0 #3
+2025/04/27-16:01:05.726 5a0 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

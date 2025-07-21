@@ -1,0 +1,10 @@
+window {
+        background-color: cadetblue;
+        color: white;
+}
+
+box#body {
+        background-color: rgba(50, 50, 50, 0.5);
+        border-radius: 1rem;
+        padding: 50px;
+}

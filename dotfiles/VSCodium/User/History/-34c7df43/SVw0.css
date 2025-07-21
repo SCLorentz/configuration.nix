@@ -1,0 +1,10 @@
+window {
+        background-color: cadetblue;
+        color: white;
+}
+
+box#body {
+        background-color: #a02f2f80;
+        border-radius: 1rem;
+        padding: 50px;
+}

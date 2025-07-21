@@ -1,0 +1,6 @@
+2025-07-20 16:49:43.918 [info] Started local extension host with pid 14490.
+2025-07-20 16:49:44.326 [info] ComputeTargetPlatform: linux-x64
+2025-07-20 16:49:50.104 [error] [Extension Host] /bin/sh: line 1: gcc: command not found
+2025-07-20 16:49:51.086 [error] Unable to write to Workspace Settings because C_Cpp.default.compileCommands is not a registered configuration.
+2025-07-20 16:49:51.141 [error] Unable to write to Workspace Settings because C_Cpp.default.configurationProvider is not a registered configuration.
+2025-07-20 16:49:55.720 [info] [perf] Render performance baseline is 76ms

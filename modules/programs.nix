@@ -144,7 +144,6 @@ environment.systemPackages = with pkgs; [
 	hyprcursor
 	hyprpanel
 	hyprland
-	hyprpaper
 	rofi
 	brightnessctl
 	grim
