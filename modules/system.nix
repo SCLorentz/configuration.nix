@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
+let
+  inherit (lib) concatStringsSep mkDefault mkIf mkOption types pipe;
 
+  currentZfs = config.boot.zfs.package;
+in
 {
   networking = {
     hostId = "deadbeef";
@@ -15,6 +19,7 @@
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
   hardware.enableAllFirmware = true;
+  services.auto-cpufreq.enable = true;
 
   boot = {
 	loader = {
@@ -27,8 +32,9 @@
 	zfs = {
 	  requestEncryptionCredentials = true;
 	  devNodes = "/dev/disk/by-uuid";
+	  #extraPools = [ "rpool" ];
 	};
-	supportedFilesystems = [ "zfs" ];
+	supportedFilesystems = [ "zfs" "ntfs" "exfat" ];
 	kernelModules = [
 	  "kvm-intel"
 	  "zfs"
@@ -64,6 +70,9 @@
 	  "plymouth.ignore-serial-consoles"
 	  "vt.global_cursor_default=0"
 	  "vt.default_vt=7"
+	  "pcie_aspm=force"
+  	  "intel_iommu=on"
+  	  "nvme.noacpi=1"
 	];
 	initrd.verbose = false;
 

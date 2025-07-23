@@ -1,5 +1,15 @@
 { config, pkgs, lib, ... }:
 {
+nix.settings.keep-derivations = false;
+nix.settings.keep-outputs = false;
+nix.settings.auto-optimise-store = true;
+
+nix.gc = {
+  automatic = true;
+  dates = "weekly";
+  options = "--delete-older-than 14d";
+};
+
 security.sudo-rs.enable = true;
 
 programs = {
@@ -56,6 +66,8 @@ programs = {
 		remotePlay.openFirewall = true;
 		dedicatedServer.openFirewall = true;
 	};
+	gamemode.enable = true;
+	gamescope.enable = true;
 	neovim.enable = true;
 };
 
@@ -71,9 +83,12 @@ environment.variables = {
 users.defaultUserShell = pkgs.zsh;
 
 services.upower.enable = true;
-
 services.blueman.enable = true;
-hardware.bluetooth.enable = true;
+
+hardware = {
+	bluetooth.enable = true;
+	graphics.enable = true;
+};
 
 nixpkgs.config.qt6 = {
 	enable = true;
@@ -141,6 +156,7 @@ environment.systemPackages = with pkgs; [
 	## Hyprland
 	hyprlandPlugins.hypr-dynamic-cursors
 	nwg-dock-hyprland
+	nwg-drawer
 	hyprcursor
 	hyprpanel
 	hyprland
