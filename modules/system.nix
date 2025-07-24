@@ -15,8 +15,8 @@ in
   console.keyMap = "br-abnt2";
 
   zramSwap.enable = true;
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enableExtensionPack = true;
 
   hardware.enableAllFirmware = true;
   services.auto-cpufreq.enable = true;
