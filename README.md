@@ -24,17 +24,13 @@ thanks https://github.com/JaKooLit
 ## Useful commands
 
 ```shell
-sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix --show-trace --upgrade
-```
-
-```shell
 sudo nix-collect-garbage -d
 ```
 
 ```shell
-killall waybar && waybar & disown
+sudo nixos-rebuild switch --flake .#
 ```
 
 ```shell
-sudo nixos-rebuild switch --flake .#
+nixos-generate-config
 ```
