@@ -131,6 +131,7 @@ environment.systemPackages = with pkgs; [
 	## langs
 	graalvm-ce
 	rustc
+	rustup
 	cargo
 	# sys
 	## Qt

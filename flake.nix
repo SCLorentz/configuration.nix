@@ -16,7 +16,7 @@ outputs = { self, nixpkgs, flake-utils, nvf, ... }: {
 	nixosConfigurations.nixos=nixpkgs.lib.nixosSystem {
                 modules = [
           	        ./configuration.nix
-          	        ./hardware-configuration.nix
+          	        /etc/nixos/hardware-configuration.nix
 		        nvf.nixosModules.default
                 ];
 	};

@@ -34,7 +34,6 @@ in
 {
   imports = [
 	<home-manager/nixos>
-	./hardware-configuration.nix
 	./modules/system.nix
 	#./modules/users.nix
 	#./modules/desktop.nix
