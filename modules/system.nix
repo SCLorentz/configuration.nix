@@ -36,12 +36,18 @@ in
 	};
 	supportedFilesystems = [ "zfs" "ntfs" "exfat" ];
 	kernelModules = [
-	  "kvm-intel"
-	  "zfs"
+	  #"kvm-intel" <<- support for virtualization
+	  "zfs"		# <<- z file system
 	  "binder"
 	  "binderfs"
 	  "ashmem_linux"
-	  "vboxdrv"
+	  "vboxdrv"	# <<- virtual box optimizations
+	  "usbnet"	# <<- share internet with USB
+	  "wireguard" 	# <<- kernel level vpn
+	  "v4l2loopback"# <<- virtual camera
+	  "overlays"	# <<- container base
+	  "kyber"	# <<- SSD manager
+	  "hid-sony"	# <<- gaming with sony
 	];
 	initrd.supportedFilesystems = [ "zfs" ];
 	initrd.systemd.enable = true;
@@ -77,11 +83,6 @@ in
 	initrd.verbose = false;
 
 	kernelPackages = pkgs.linuxPackages_zen;
-
-	extraModulePackages = with config.boot.kernelPackages; [
-    		v4l2loopback
-    		xpadneo
-  	];
   };
 
   services = {
@@ -90,4 +91,12 @@ in
 	  autoSnapshot.enable = true;
 	};
   };
+
+  environment.systemPackages = with pkgs.linuxKernel.packages; [
+    linux_zen.v4l2loopback
+    linux_zen.xpadneo
+    linux_zen.zfs_2_3
+    linux_zen.xone
+    linux_zen.virtualbox
+  ];
 }

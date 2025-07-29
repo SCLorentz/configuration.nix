@@ -107,34 +107,36 @@ networking.firewall = {
 };
 
 environment.systemPackages = with pkgs; [
-	# Shell
-	git
-	oh-my-zsh
-	kitty
-	nixos-generators
-	android-tools
-	duf
-	eza
-	greetd.gtkgreet
-	# bloatware
-	## themes
-	sddm-sugar-dark
-	gruvbox-plus-icons
-	catppuccin
-	## viewer
+	# --- Shell ---
+	git		# <<- clone repo
+	oh-my-zsh	# <<- zsh plugins
+	kitty		# <<- terminal emulator
+	nixos-generators# <<- iso generator
+	android-tools	# <<- adb, connect phone
+	duf		# <<- used space viewer
+	eza		# <<- ls replacement
+	neofetch	# <<- system info
+	# --- bloatware ---
+	# -- themes --
+	sddm-sugar-dark	# <<- (KDE) DM theme
+	#gruvbox-plus-icons
+	#catppuccin
+	# --- viewer ---
 	process-viewer
-	nomacs
-	vlc
-	vscodium
-	## social
-	spotify
-	## langs
-	graalvm-ce
-	rustc
+	nomacs 		# <<- image viewer
+	vlc		# <<- video player
+	#vscodium
+	qtcreator	# <<- IDE
+	# -- social --
+	psst		# <<- native spotify client
+	# -- langs --
+	#graalvm-ce 	# <<- Java Virtual Machine
+	rustc		# <<- for compilation purposes
 	rustup
 	cargo
-	# sys
-	## Qt
+	gcc
+	# --- sys ---
+	# -- Qt --
 	qt5.qtquickcontrols2
 	qt5.qtgraphicaleffects
 	qt5.qtquickcontrols
@@ -147,38 +149,34 @@ environment.systemPackages = with pkgs; [
     	libsForQt5.qt5ct
 	qt6ct
       	qt6.qtwayland
-	## KDE
+	# -- KDE --
 	kdePackages.dolphin
+	kdePackages.dolphin-plugins
 	kdePackages.qtsvg
 	kdePackages.kio-fuse
 	kdePackages.kio-extras
-	neofetch
-	# WM
+	# --- WM ---
 	## Hyprland
-	hyprlandPlugins.hypr-dynamic-cursors
-	nwg-dock-hyprland
-	nwg-drawer
-	hyprcursor
-	hyprpanel
-	hyprland
-	rofi
+	#hyprlandPlugins.hypr-dynamic-cursors
+	#hyprcursor
+	hyprpanel	# <<- topbar panel
+	hyprland	# <<- window tiling manager (GUI)
+	rofi		# <<- app launcher
 	brightnessctl
 	grim
-	slurp
-	wl-clipboard
+	#slurp		# <<- screenshot (replace with hyprpanel)
 	pamixer
 	playerctl
-	xwayland
-	yad
+	xwayland	# <<- compability with Xorg apps
 	brightnessctl
 	pavucontrol
 	wttrbar
 	cliphist
 	xdg-desktop-portal-hyprland
-	# libs & dependencies
-	ffmpeg
+	# --- libs & dependencies ---
+	ffmpeg		# <<- image & video lib
 	libva
-	imagemagick
+	imagemagick	# <<- image editor
 	wireplumber
 	libgtop
 	bluez
@@ -188,6 +186,7 @@ environment.systemPackages = with pkgs; [
 	gvfs
 	swww
 	gtksourceview3
+	# wineWowPackages.waylandFull <<- .exe compat.
 ];
 }
 
