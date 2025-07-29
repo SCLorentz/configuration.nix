@@ -108,7 +108,7 @@ networking.firewall = {
 
 environment.systemPackages = with pkgs; [
 	# --- Shell ---
-	git		# <<- clone repo
+	git		# <<- src control
 	oh-my-zsh	# <<- zsh plugins
 	kitty		# <<- terminal emulator
 	nixos-generators# <<- iso generator
@@ -155,7 +155,8 @@ environment.systemPackages = with pkgs; [
 	#hyprcursor
 	hyprpanel	# <<- topbar panel
 	hyprland	# <<- window tiling manager (GUI)
-	rofi		# <<- app launcher
+	#rofi		# <<- app launcher
+	walker		# <<- app launcher
 	brightnessctl
 	grim
 	pamixer
