@@ -1,6 +1,0 @@
-[ INFO ] utils - ../src/libutils/utils.cpp:215: Launching pkg-config with args [--list-all] 
-[ ERROR ] utils - ../src/libutils/utils.cpp:247: Failed to execvp(): No such file or directory (2)
-[ WARN ] utils - ../src/libutils/utils.cpp:282: Child process exited with status: 2 
-[ INFO ] AbstractLanguageServer - ../src/libls/ls.cpp:70: Received request: initialize 
-[ INFO ] utils - ../src/libutils/utils.cpp:215: Launching pkg-config with args [--list-all] 
-[ ERROR ] utils - ../src/libutils/utils.cpp:247: Failed to execvp(): No such file or directory (2)

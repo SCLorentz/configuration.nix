@@ -64,6 +64,7 @@ in
 	
 	consoleLogLevel = 0;
 	kernelParams = [
+	  "i915.enable_psr=0" 
 	  "quiet"
 	  "udev.log_level=3"
 	  "rd.systemd.show_status=false"

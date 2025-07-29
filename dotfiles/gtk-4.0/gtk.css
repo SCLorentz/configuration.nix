@@ -1,0 +1,5 @@
+headerbar .titlebutton,
+.header-bar .window-controls {
+    display: none;
+}
+

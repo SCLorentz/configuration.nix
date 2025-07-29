@@ -1,7 +1,0 @@
-2025-07-21 12:10:18.947 [info] Started local extension host with pid 3351.
-2025-07-21 12:10:19.548 [info] ComputeTargetPlatform: linux-x64
-2025-07-21 12:10:24.831 [warning] Creation of workbench contribution 'chat.edits.editorOverlay' took 115ms.
-2025-07-21 12:10:26.135 [warning] Creation of workbench contribution 'status.languageStatus' took 124ms.
-2025-07-21 12:10:26.141 [warning] Creation of workbench contribution 'workbench.contrib.dynamicSpeechAccessibilityConfiguration' took 105ms.
-2025-07-21 12:10:27.449 [warning] Creation of workbench contribution 'workbench.contrib.keywordActivation' took 238ms.
-2025-07-21 12:10:35.962 [info] [perf] Render performance baseline is 116ms

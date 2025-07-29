@@ -119,14 +119,14 @@ environment.systemPackages = with pkgs; [
 	# --- bloatware ---
 	# -- themes --
 	sddm-sugar-dark	# <<- (KDE) DM theme
-	#gruvbox-plus-icons
-	#catppuccin
-	# --- viewer ---
+	# --- defaults ---
 	process-viewer
 	nomacs 		# <<- image viewer
 	vlc		# <<- video player
-	#vscodium
-	qtcreator	# <<- IDE
+	qtcreator	# <<- native IDE
+	cosmic-edit	# <<- text editor
+	cosmic-files	# <<- simple file browser
+	libsForQt5.booth# <<- camera app
 	# -- social --
 	psst		# <<- native spotify client
 	# -- langs --
@@ -134,7 +134,7 @@ environment.systemPackages = with pkgs; [
 	rustc		# <<- for compilation purposes
 	rustup
 	cargo
-	gcc
+	gcc		# <<- C/C++ compiler
 	# --- sys ---
 	# -- Qt --
 	qt5.qtquickcontrols2
@@ -149,12 +149,6 @@ environment.systemPackages = with pkgs; [
     	libsForQt5.qt5ct
 	qt6ct
       	qt6.qtwayland
-	# -- KDE --
-	kdePackages.dolphin
-	kdePackages.dolphin-plugins
-	kdePackages.qtsvg
-	kdePackages.kio-fuse
-	kdePackages.kio-extras
 	# --- WM ---
 	## Hyprland
 	#hyprlandPlugins.hypr-dynamic-cursors
@@ -164,7 +158,6 @@ environment.systemPackages = with pkgs; [
 	rofi		# <<- app launcher
 	brightnessctl
 	grim
-	#slurp		# <<- screenshot (replace with hyprpanel)
 	pamixer
 	playerctl
 	xwayland	# <<- compability with Xorg apps

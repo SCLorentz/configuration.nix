@@ -172,3 +172,13 @@ configuration {
 	me-accept-custom: "Control+MouseDPrimary";
 */
 }
+
+//@theme "/nix/store/wiw9zwpy63ndkymq2qc983cmg86cjpw8-rofi-1.7.9/share/rofi/themes/fullscreen-preview.rasi"
+
+//@theme "/home/sclorentz/.config/rofi/themes/KooL_style-3-Fullscreen-v2.rasi"
+
+//@theme "/nix/store/wiw9zwpy63ndkymq2qc983cmg86cjpw8-rofi-1.7.9/share/rofi/themes/fullscreen-preview.rasi"
+
+//@theme "/nix/store/wiw9zwpy63ndkymq2qc983cmg86cjpw8-rofi-1.7.9/share/rofi/themes/android_notification.rasi"
+
+@theme "/nix/store/wiw9zwpy63ndkymq2qc983cmg86cjpw8-rofi-1.7.9/share/rofi/themes/gruvbox-light-soft.rasi"

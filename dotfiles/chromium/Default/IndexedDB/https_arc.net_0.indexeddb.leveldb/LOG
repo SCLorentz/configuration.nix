@@ -1,6 +1,0 @@
-2025/04/27-09:17:44.161 5f7 Creating DB /home/sclorentz/.config/chromium/Default/IndexedDB/https_arc.net_0.indexeddb.leveldb since it was missing.
-2025/04/27-09:17:44.172 5f7 Reusing MANIFEST /home/sclorentz/.config/chromium/Default/IndexedDB/https_arc.net_0.indexeddb.leveldb/MANIFEST-000001
-2025/04/27-09:17:44.332 5f8 Level-0 table #5: started
-2025/04/27-09:17:44.341 5f8 Level-0 table #5: 756 bytes OK
-2025/04/27-09:17:44.347 5f8 Delete type=0 #3
-2025/04/27-09:17:44.348 5f8 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
