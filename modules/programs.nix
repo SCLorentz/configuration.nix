@@ -1,4 +1,7 @@
-{ config, pkgs, lib, ... }:
+{config, pkgs, lib, inputs, ... }:
+let
+  plugins = inputs.hyprland-plugins.packages.${pkgs.system};
+in
 {
 nix.settings.keep-derivations = false;
 nix.settings.keep-outputs = false;
@@ -127,6 +130,7 @@ environment.systemPackages = with pkgs; [
 	cosmic-edit	# <<- text editor
 	cosmic-files	# <<- simple file browser
 	libsForQt5.booth# <<- camera app
+	file-roller 	# <<- zip extractor
 	# -- social --
 	psst		# <<- native spotify client
 	# -- langs --
@@ -152,9 +156,10 @@ environment.systemPackages = with pkgs; [
 	# --- WM ---
 	## Hyprland
 	#hyprlandPlugins.hypr-dynamic-cursors
+	plugins.hyprexpo
 	#hyprcursor
 	hyprpanel	# <<- topbar panel
-	hyprland	# <<- window tiling manager (GUI)
+	#hyprland	# <<- window tiling manager (GUI)
 	#rofi		# <<- app launcher
 	walker		# <<- app launcher
 	brightnessctl
@@ -180,7 +185,7 @@ environment.systemPackages = with pkgs; [
 	gvfs
 	swww
 	gtksourceview3
-	# wineWowPackages.waylandFull <<- .exe compat.
+	#wineWowPackages.waylandFull <<- .exe compat.
 ];
 }
 
