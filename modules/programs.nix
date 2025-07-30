@@ -159,6 +159,7 @@ environment.systemPackages = with pkgs; [
 	plugins.hyprexpo
 	#hyprcursor
 	hyprpanel	# <<- topbar panel
+	hyprpaper	# <<- wallpaper engine
 	#hyprland	# <<- window tiling manager (GUI)
 	#rofi		# <<- app launcher
 	walker		# <<- app launcher

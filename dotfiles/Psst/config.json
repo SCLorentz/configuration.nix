@@ -1,13 +1,15 @@
 {
   "credentials": {
     "username": "31gjwchaqorfh4ceneh2niyhxtg4",
-    "auth_data": "AgDuaqbKa7V-SolWHNM9VWjSdrpTl60INXckKggt26O4BHKeV6uhpcq_OIAaf1WUXr6-PLch8zse0l7IEgzY8Yxxm0fw2qy2OfR5dYbnerrC_O6tQxv4C00gGHGjvKfS5rjsFM7fsZirc_UN4yEiIiv9p3iK2fTzlqFVB4_iuIcVpdMgWq7-eOwB4qkSXghR",
+    "auth_data": "AgDwU_I2EiO8XJ_d4pnGHIUVNiYu_VqOUsJ0oHz0oWsMP1mMo7tkdf0WUIUjSZVbC_qzVfbqcHTUNUeKAUGtriJq128mSidHvui5-TNi2tA-VvErUrGfzXlSgycLo09crkI_aQt3hj123gep4VU_oUXoXsc0WrUUjaJZNJmU51Qzhh908F3g0TrLhIm2dFDc",
     "auth_type": 1
   },
   "audio_quality": "High",
   "theme": "Dark",
   "volume": 1.0,
-  "last_route": "Home",
+  "last_route": {
+    "SearchResults": "smallest violin"
+  },
   "queue_behavior": "Sequential",
   "show_track_cover": true,
   "window_size": {

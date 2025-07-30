@@ -471,5 +471,8 @@
   "menus.media.hideAlbum": false,
   "menus.media.hideAuthor": false,
   "theme.bar.buttons.y_margins": "0.4em",
-  "theme.bar.layer": "top"
+  "theme.bar.layer": "top",
+  "bar.network.truncation": false,
+  "theme.bar.buttons.modules.microphone.enableBorder": false,
+  "bar.customModules.netstat.dynamicIcon": true
 }
